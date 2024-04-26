@@ -1,35 +1,118 @@
-h5{
-    font-size: 20px;
+body{
+    background-color: black;
 }
 
-.filho{
-    display: flex;
-    margin-top: 20px;
-    margin-left: 10px;
-    padding: 10px;
-    justify-content: space-evenly;
+h3{
+    color: white;
 }
 
-.filho img {
-    height: 300px;
-    width: 750px;
-}
-.filho2{
+.titulo{
     display: flex;
-    margin-left: 50px;
+    justify-content: center;
+}
+.subtitulo{
+    display: flex;
+    justify-content: center;
     padding: 10px;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
     
 }
 
-.imgStart {
-    width: 1250px;
-    height: 550px;
+.start img{
+    height: 450px;
+    width: 100%;
+    display: flex;
+    
 }
 
-body{
-    background: -webkit-linear-gradient(left, #d4dcea, #79bbb6);
-    background: -moz-linear-gradient(left, #d4dcea, #79bbb6);
-    background: -ms-linear-gradient(left, #d4dcea, #79bbb6);
-    background: -o-linear-gradient(left, #d4dcea, #79bbb6);
-    background: linear-gradient(to right, #d4dcea, #79bbb6);
+.imagens{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 2px;
+}
+
+.imagens img {
+    height: 200px;
+    width: 310px
+}
+
+.textos {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px;
+    margin-right: 50px;
+}
+
+.overlay {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    background: #7272D0;
+    z-index: -1;
+    margin-top: -120px; 
+}
+
+.divFooter {
+    display: flex;
+    justify-content: space-evenly;
+    margin-right: 20px;
+}
+
+
+.overlay-content {
+    padding: 20px;
+    color: white;
+}
+
+h2{
+    margin-top: 180px;
+}
+
+.quest {
+    display: flex;
+    padding: 5px;
+    margin-left: 10px;
+}
+
+.quest img{
+    height: 230px;
+    width: 330px;
+}
+
+.questFilho{
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+.exibir{
+    margin-top: 110px;
+    margin-left: 20px;
+}
+
+button {
+    border-radius: 10px;
+    background-color: #3022CF;
+    color: white;
+    width: 200px;
+    border: 0px solid;
+}
+
+button:hover{
+    background-color: #7272D0;
+    cursor: pointer;
+}
+
+footer {
+    background-color: #1f1e29;
+    position:relative;
+    margin-top: 2%;
+    
+    width: 100%;
+    height: 60px;
 }

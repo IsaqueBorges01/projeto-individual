@@ -11,44 +11,104 @@
 
 <body>
     <div class="navbar">
-        <img class="logo" src="../img/logo.jpg" alt="Logo">
+        <img class="logo" src="../img/y-removebg-preview.png" alt="Logo">
         <nav class="elements">
             <ul>
-                <li><a href="login.html">LOGIN</a></li>
-                <li><a href="contato.html">CONTATO</a></li>
-                <li><a href="sobre.html">SOBRE</a></li>
                 <li><a href="home.html">HOME</a></li>
+                <li><a href="sobre.html">SOBRE</a></li>
+                <li><a href="contato.html">CONTATO</a></li>
+                <li><a href="login.html">LOGIN</a></li>
             </ul>
         </nav>
     </div>
     <div class="container">
-        <div class="filho">
-            <h5 style="font-family: italic;">Sejam muito bem vindos ao <span
-                    style="color:cornflowerblue; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
-                    Academia Start</span><br>
-                Aqui aprenderemos mais sobre academia, seus tipos,<br>
-                valores, benefícios e muito mais, vamos la?<br><br>
-                <span
-                    style="color:cornflowerblue; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
-                    Primeiramente, o que é academia?</span><br>
-                A palavra "academia" tem origens na Grécia Antiga,<br>
-                referindo-se ao jardim ou local de ensino fundado <br>
-                por Platão, conhecido como a Academia de Atenas.<br>
-                Ou seja, é um estabelecimento onde várias<br>
-                modalidades esportivas são praticadas.
-            </h5>
-            <img src="../img/academia.jpg" alt="imagem_academia">
+        <div class="titulo">
+            <h3>SEJA BEM VINDO A ACADEMIA <SPAN style="color: #3022CF;"> START!</SPAN></h3>
         </div>
-        <div class="filho2">
-            <h5 style="font-family: italic;">
-                <img class="imgStart" src="../img/start.png" alt="imagem_start"><br>
-                <span style="color:rgb(7, 83, 224); font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
-                    Ficou interessado? </span>Venha conhecer mais!<br>
-                    Vamos entender o verdadeiro conceito de academia.<br>
-                    <span style="color:rgb(0, 89, 255)">Quero conhecer! </span><a href="sobre.html">Clique aqui</a>
-            </h5>
+        <div class="start">
+            <img src="../img/start.png" alt="start">
+        </div>
+        <div class="subtitulo">
+            <h3>VENHA CONHECER OS PONTOS<BR>
+                SOBRE <span style="color: #3022CF;">ACADEMIA</span> QUE NÓS<BR>
+                ABORDAREMOS AQUI:
+            </h3>
+        </div>
+        <div class="textos">
+            <h3>CONCEITO:</h3>
+            <h3>BENEFÍCIOS:</h3>
+            <h3>ORIGEM:</h3>
+        </div>
+
+    <div class="imagens">
+        <img src="../img/conceito.jpg" alt="conceito">
+        <img src="../img/beneficios.jpg" alt="beneficios">
+        <img src="../img/origem.png" alt="origem">
+    </div>
+    <div class="overlay">
+        <div class="overlay-content">
+            <h2>FUNCIONALIDADES EXTRAS:</h2>
+            <h3 style="color: black;">QUIZ SOBRE ACADEMIA PARA EXERCITAR SUA MENTE E SEU CONHECIMENTO. 🏋🏼</h3>
+            <H3 style="color: black;">ROTINA DE TREINO DE MUSCULAÇÃO COM BASE NA SUA ROTINA. 😱</H3>
+        </div>
+        <div class="quest">
+            <div class="questFilho">
+            <div>
+            <h3>Vamos testar seu <span style="color: #3022CF;">conhecimento</span>? Tente responder a perguta abaixo:</h3><br>
+             <img src="../img/legpress.png" alt="legpress">
+             <h4 style="color: white;">Qual o nome do exercício acima?</h4>
+             <button onclick="flexora()">Cadeira Flexora</button><BR>
+             <button onclick="legpress()">LegPress</button><BR>
+             <button onclick="jantar()">Cadeira de jantar</button><BR>
+             <button onclick="extensora()">Cadeira Extensora</button>
+            </div>
+            <div>
+             <div class="exibir" id="exibir" style="color: white; font-size: 25px;"></div>
         </div>
     </div>
+    </div>
+    <footer>
+        <div class="divFooter">
+            <h3>PRIVACY POLITIC | TERMS AND CONDITIONS | COOKIES</h3>
+            <h5 style="color: white;">©️ All Copyright 2024 by Academia Start</h5>
+        </div>
+    </footer> 
+    </div>
+    </div>
+    
 </body>
-
 </html>
+
+<script>
+    function flexora(){
+        exibir.innerHTML=''
+        exibir.innerHTML =`<p style="color:red;">Resposta incorreta ☹️</p>
+                          Tente novamente!`
+    }
+
+    function legpress(){
+        exibir.innerHTML=''
+        exibir.innerHTML =`<p style="color:green;">PARABÉNS!! VOCÊ ACERTOU 🥳</p> VOCÊ É BOM EM!!`
+        exibir.innerHTML+=`Achou interessante? Temos uma página exclsuivamente
+                           para o quiz, contendo diversas perguntas para treinar
+                           e exercitar seu conhecimento sobre academia!<br><br>
+                           Você precisa se logar primeiro 😉  <button onclick="logar()" style="background-color:green;
+                           height:25px;">LOGAR</button>`
+    }
+
+    function extensora(){
+        exibir.innerHTML=''
+        exibir.innerHTML =`<p style="color:red;">Resposta incorreta ☹️</p>
+                          Tente novamente!`
+    }
+
+    function jantar(){
+        exibir.innerHTML=''
+        exibir.innerHTML =`<p style="color:red;">Resposta incorreta ☹️</p>
+                          Tente novamente!`
+    }
+
+    function logar(){
+     window.location.href="login.html"
+    }
+</script>
