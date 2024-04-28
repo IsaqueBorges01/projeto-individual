@@ -7,7 +7,13 @@
     width: 100%;
 }
 body{
-    background-color: black;
+
+    background: -webkit-linear-gradient(left, #413636, #000000);
+    background: -moz-linear-gradient(left, #413636, #000000);
+    background: -ms-linear-gradient(left, #413636, #000000);
+    background: -o-linear-gradient(left, #413636, #000000);
+    background: linear-gradient(to right, #413636, #000000);
+    
 }
 
 .elements {
@@ -22,6 +28,8 @@ body{
     list-style-type: none;
     margin-right: 15px;
     display: flex;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
 }
 
 .navbar ul{

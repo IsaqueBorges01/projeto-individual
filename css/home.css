@@ -1,8 +1,5 @@
-body{
-    background-color: black;
-}
-
 h3{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: white;
 }
 
@@ -27,6 +24,7 @@ h3{
     height: 450px;
     width: 100%;
     display: flex;
+    border-radius: 10px;
     
 }
 
@@ -38,7 +36,8 @@ h3{
 
 .imagens img {
     height: 200px;
-    width: 310px
+    width: 310px;
+    border-radius: 20px;
 }
 
 .textos {
@@ -71,6 +70,8 @@ h3{
 
 h2{
     margin-top: 180px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
 }
 
 .quest {
@@ -82,12 +83,14 @@ h2{
 .quest img{
     height: 230px;
     width: 330px;
+    border-radius: 15px;
 }
 
 .questFilho{
     display: flex;
     justify-content: space-around;
     padding: 10px;
+    margin: 10px;
 }
 
 .exibir{
@@ -101,6 +104,7 @@ button {
     color: white;
     width: 200px;
     border: 0px solid;
+    font-weight: bold;
 }
 
 button:hover{
@@ -112,7 +116,8 @@ footer {
     background-color: #1f1e29;
     position:relative;
     margin-top: 2%;
-    
     width: 100%;
     height: 60px;
 }
+
+

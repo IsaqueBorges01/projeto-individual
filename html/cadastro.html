@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/cadastro.css">
+
+    <title>CADASTRO</title>
+</head>
+
+<body>
+    <div class="navbar">
+        <img class="logo" src="../img/y-removebg-preview.png" alt="Logo">
+        <nav class="elements">
+            <ul>
+                <li><a href="home.html">HOME</a></li>
+                <li><a href="sobre.html">SOBRE</a></li>
+                <li><a href="contato.html">CONTATO</a></li>
+                <li><a href="login.html">LOGIN</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="container">
+        <div>
+            <img src="../img/y-removebg-preview.png" alt="">
+        </div>
+     <div class="form">
+        <h2>CADASTRO</h2>
+        <input id="input_nome" placeholder="Insira seu nome"><br>
+        <input id="input_email" placeholder="Insira seu email"><br>
+        <input id="input_senha" type="password" placeholder="Insira sua senha"><br>
+        <input id="input_confirmar"type="password" placeholder="Confirme sua senha"><br>
+        <button onclick="Cadastrar()">Cadastrar</button><br><br>
+        <p style="color: white; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Já tem um login? <a style="color: #3022CF;" href="login.html">Login</a></p>
+     </div>
+     <div class="exibir" id="exibir" style="color: red; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"></div>
+     
+    </div>
+    <footer>
+        <div class="divFooter">
+            <h3>PRIVACY POLITIC | TERMS AND CONDITIONS | COOKIES</h3>
+            <h5 style="color: white; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            ">©️ All Copyright 2024 by Academia Start</h5>
+        </div>
+    </footer> 
+</body>
+
+</html>
+
+<script>
+    function Cadastrar(){
+     const nome = input_nome.value
+     const email = input_email.value
+     const senha = input_senha.value
+     const confirmar = input_confirmar.value
+     const arroba = email.indexOf('@')
+     const ponto = email.indexOf('.com')
+     const exclamacao = senha.indexOf('!')
+     const arrobs = senha.indexOf('@')
+     const velha = senha.indexOf('#')
+     const cifrao = senha.indexOf('$')
+     const ast = senha.indexOf('*')
+     const comercial = senha.indexOf('&')
+     const porcento = senha.indexOf('%')
+
+     if(nome == '' || email ==''||senha==''|| confirmar==''){
+        exibir.innerHTML =`Preencha todos os campos`
+        return
+     }
+
+     else if(nome.length <=1){
+      exibir.innerHTML=`Seu nome precisa conter<br>
+                        mais de 1 caracter!`
+                        return
+     } else if(arroba <0 && ponto<0){
+      exibir.innerHTML=`Seu email precisa conter:<br>
+                        um "@" e um ".com"`
+                        return
+     } else if(arroba<0 && ponto>=0){
+      exibir.innerHTML=`Seu email precisa conter
+                        um "@"`
+                        return
+     } else if(ponto<0 && arroba>=0){
+      exibir.innerHTML=`Seu email precisa conter
+                        um ".com"`
+                        return
+     } else if(senha.length<10 || (exclamacao<0 && arrobs<0 && velha<0 && cifrao<0 && ast<0 && comercia<0 && porcento<0)){
+      exibir.innerHTML=`Sua senha deve conter<br>
+                        no mínimo 10 caracteres<br>
+                        pelo menos 1 caracter especial`
+                        return
+     } else if(senha != confirmar || confirmar !=senha ){
+        exibir.innerHTML = `Suas senhas precisam estar iguais!`
+        return
+     }
+     alert(`Cadastro efetuado com sucesso!`)
+     window.location.href="login.html"
+
+    }
+</script>

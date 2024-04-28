@@ -56,21 +56,24 @@
             <div>
             <h3>Vamos testar seu <span style="color: #3022CF;">conhecimento</span>? Tente responder a perguta abaixo:</h3><br>
              <img src="../img/legpress.png" alt="legpress">
-             <h4 style="color: white;">Qual o nome do exercício acima?</h4>
+             <h4 style="color: white; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+             ">Qual o nome do exercício acima?</h4>
              <button onclick="flexora()">Cadeira Flexora</button><BR>
              <button onclick="legpress()">LegPress</button><BR>
              <button onclick="jantar()">Cadeira de jantar</button><BR>
              <button onclick="extensora()">Cadeira Extensora</button>
             </div>
             <div>
-             <div class="exibir" id="exibir" style="color: white; font-size: 25px;"></div>
+             <div class="exibir" id="exibir" style="color: white; font-size: 25px; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+             "></div>
         </div>
     </div>
     </div>
     <footer>
         <div class="divFooter">
             <h3>PRIVACY POLITIC | TERMS AND CONDITIONS | COOKIES</h3>
-            <h5 style="color: white;">©️ All Copyright 2024 by Academia Start</h5>
+            <h5 style="color: white; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            ">©️ All Copyright 2024 by Academia Start</h5>
         </div>
     </footer> 
     </div>
@@ -88,12 +91,10 @@
 
     function legpress(){
         exibir.innerHTML=''
-        exibir.innerHTML =`<p style="color:green;">PARABÉNS!! VOCÊ ACERTOU 🥳</p> VOCÊ É BOM EM!!`
+        exibir.innerHTML =`<p style="color:green; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">PARABÉNS!! VOCÊ ACERTOU 🥳</p> VOCÊ É BOM HEIN!! `
         exibir.innerHTML+=`Achou interessante? Temos uma página exclsuivamente
                            para o quiz, contendo diversas perguntas para treinar
-                           e exercitar seu conhecimento sobre academia!<br><br>
-                           Você precisa se logar primeiro 😉  <button onclick="logar()" style="background-color:green;
-                           height:25px;">LOGAR</button>`
+                           e exercitar seu conhecimento sobre academia!<br>`
     }
 
     function extensora(){
