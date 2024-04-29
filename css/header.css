@@ -1,3 +1,7 @@
+body{
+    margin: 0;
+    overflow-x: hidden;
+}
 .navbar {
     background-color: #7272D0;
     display: flex;
@@ -21,7 +25,7 @@ body{
 }
 
 .navbar img {
-    height: 100px;
+    height: 75px;
 }
 
 .navbar li {

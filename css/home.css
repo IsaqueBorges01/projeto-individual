@@ -43,7 +43,8 @@ h3{
 .textos {
     display: flex;
     justify-content: space-evenly;
-    padding: 10px;
+    padding: 15px;
+    margin-top: 15px;
     margin-right: 50px;
 }
 
@@ -88,14 +89,16 @@ h2{
 
 .questFilho{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     padding: 10px;
     margin: 10px;
+    background-color: white;
+    width: 100%;
 }
 
 .exibir{
     margin-top: 110px;
-    margin-left: 20px;
+    margin-left: 15px;
 }
 
 button {
@@ -118,6 +121,17 @@ footer {
     margin-top: 2%;
     width: 100%;
     height: 60px;
+}
+
+.botoes {
+    display: flex;
+    flex-direction: column;
+}
+
+.elementos{
+    display: flex;
+    flex-direction: column;
+    margin-right: 650px;
 }
 
 

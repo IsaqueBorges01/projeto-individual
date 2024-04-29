@@ -4,7 +4,7 @@ h2 {
 
 .container {
     display: flex;
-    margin-left: 20%;
+    margin-left: 18%;
 }
 
 .form {
@@ -26,6 +26,7 @@ input {
     height: 25px;
     color: white;
     font-weight: bold;
+    padding:5px;
 }
 
 button {
@@ -68,3 +69,7 @@ h3 {
     margin-top: 200px;
     margin-left: 40px;
 }
+
+.img{
+    margin-top: 20px;
+   }
