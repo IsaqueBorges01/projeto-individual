@@ -20,9 +20,15 @@ h3{
     
 }
 
+.start{
+    background-color: white;
+    height: 90PX;
+    width: 90PX;
+}
+
 .start img{
-    height: 450px;
-    width: 100%;
+    height: 300px;
+    width: 30%;
     display: flex;
     border-radius: 10px;
     
@@ -40,12 +46,19 @@ h3{
     border-radius: 20px;
 }
 
+.imagens img:hover{
+    cursor: pointer;
+    height: 230px;
+    width: 320px;
+}
+
 .textos {
     display: flex;
-    justify-content: space-evenly;
-    padding: 15px;
-    margin-top: 15px;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-left: 35px;
     margin-right: 50px;
+    padding: 18px;
 }
 
 .overlay {
@@ -94,11 +107,6 @@ h2{
     margin: 10px;
     background-color: white;
     width: 100%;
-}
-
-.exibir{
-    margin-top: 110px;
-    margin-left: 15px;
 }
 
 button {

@@ -26,7 +26,8 @@
             <h3>SEJA BEM VINDO A ACADEMIA <SPAN style="color: #3022CF;"> START!</SPAN></h3>
         </div>
         <div class="start">
-            <img src="../img/start.png" alt="start">
+           
+
         </div>
         <div class="subtitulo">
             <h3>VENHA CONHECER OS PONTOS
@@ -41,9 +42,9 @@
         </div>
 
         <div class="imagens">
-            <img src="../img/conceito.jpg" alt="conceito">
-            <img src="../img/beneficios.jpg" alt="beneficios">
-            <img src="../img/origem.png" alt="origem">
+            <img onclick="mudar()" src="../img/conceito.jpg" alt="conceito">
+            <img onclick="mudar()" src="../img/beneficios.jpg" alt="beneficios">
+            <img onclick="mudar()" src="../img/origem.png" alt="origem">
         </div>
         <div class="overlay">
             <div class="overlay-content">
@@ -52,26 +53,28 @@
                 <H3 style="color: black;">ROTINA DE TREINO DE MUSCULAÇÃO COM BASE NA SUA ROTINA. 😱</H3>
             </div>
             <div class="quest">
-                <div class="questFilho">
+                 <div class="questFilho">
                     <div class="elementos">
-                        <h3 style="color: black;">Vamos testar seu <span
-                                style="color: #3022CF;">conhecimento</span>?<br> Tente responder a
-                            perguta abaixo:</h3><br>
-                        <img src="../img/legpress.png" alt="legpress">
-                        <h4 style="color: rgb(0, 0, 0); font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                        <div style="margin-right: 250px;">
+                            <h3 style="color: black;">Vamos testar seu <span
+                                    style="color: #3022CF;">conhecimento</span>?<br> Tente responder a
+                                perguta abaixo:</h3><br>
+                            <img src="../img/legpress.png" alt="legpress">
+                            <h4 style="color: rgb(0, 0, 0); font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
              ">Qual o nome do exercício acima?</h4>
-                        <div class="botoes">
-                            <button onclick="flexora()">Cadeira Flexora</button><BR>
-                            <button onclick="legpress()">LegPress</button><BR>
-                            <button onclick="jantar()">Cadeira de jantar</button><BR>
-                            <button onclick="extensora()">Cadeira Extensora</button>
+                            <div class="botoes">
+                                <button onclick="flexora()">Cadeira Flexora</button><BR>
+                                <button onclick="legpress()">LegPress</button><BR>
+                                <button onclick="jantar()">Cadeira de jantar</button><BR>
+                                <button onclick="extensora()">Cadeira Extensora</button>
+                            </div>
                         </div>
                     </div>
-                    <div>
+                   <!-- <div>
                         <div class="exibir" id="exibir" style="color: rgb(0, 0, 0); font-size: 25px; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
              "></div>
-                    </div>
-                </div>
+                    </div>-->
+                </div> 
             </div>
             <footer>
                 <div class="divFooter">
@@ -116,5 +119,9 @@
 
     function logar() {
         window.location.href = "login.html"
+    }
+
+    function mudar(){
+        window.location.href="sobre.html"
     }
 </script>
