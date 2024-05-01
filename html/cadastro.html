@@ -12,11 +12,12 @@
 
 <body>
     <div class="navbar">
-        <img class="logo" src="../img/logo.png" alt="Logo">
+        <img class="logo" onclick="home()" src="../img/logo.png" alt="Logo">
         <nav class="elements">
             <ul>
                 <li><a href="home.html">HOME</a></li>
                 <li><a href="sobre.html">SOBRE</a></li>
+                <li><a href="quiz.html">QUIZ</a></li>
                 <li><a href="contato.html">CONTATO</a></li>
                 <li><a href="login.html">LOGIN</a></li>
             </ul>
@@ -99,4 +100,8 @@
      window.location.href="login.html"
 
     }
+    
+        function home(){
+            window.location.href="home.html"
+        }
 </script>

@@ -19,11 +19,11 @@ h2 {
 }
 
 input {
-    width: 200px;
+    width: 220px;
     border: 1px solid;
     border-radius: 10px;
     background: transparent;
-    height: 25px;
+    height: 30px;
     color: white;
     font-weight: bold;
     padding:5px;
@@ -36,8 +36,8 @@ button{
     font-weight: bold;
     background-color: #3022cf;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    width: 100px;
-    height: 25px;
+    width: 130px;
+    height: 35px;
 }
 
 button:hover{

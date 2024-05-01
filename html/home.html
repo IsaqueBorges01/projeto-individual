@@ -16,6 +16,7 @@
             <ul>
                 <li><a href="home.html">HOME</a></li>
                 <li><a href="sobre.html">SOBRE</a></li>
+                <li><a href="quiz.html">QUIZ</a></li>
                 <li><a href="contato.html">CONTATO</a></li>
                 <li><a href="login.html">LOGIN</a></li>
             </ul>
@@ -24,9 +25,13 @@
     <div class="container">
         <div class="titulo">
             <h3>SEJA BEM VINDO A ACADEMIA <SPAN style="color: #3022CF;"> START!</SPAN></h3>
+            <h3>AQUI VOCÊ CONHECERÁ TUDO SOBRE ACADEMIA</h3>
+            <H3>E DECIDIRÁ QUAL DOS 2 ABAIXO VOCÊ QUER SER:</H3>
         </div>
         <div class="start">
-           
+          <img src="../img/bombado.png.png" alt="">
+          <img src="../img/vs.png" alt="">
+          <img src="../img/frango.png" alt="">
 
         </div>
         <div class="subtitulo">
@@ -42,9 +47,12 @@
         </div>
 
         <div class="imagens">
-            <img onclick="mudar()" src="../img/conceito.jpg" alt="conceito">
-            <img onclick="mudar()" src="../img/beneficios.jpg" alt="beneficios">
-            <img onclick="mudar()" src="../img/origem.png" alt="origem">
+            <img  style="height: 190px; width: 290px;"
+            onclick="mudar()" src="../img/conceito.png" alt="conceito">
+            <img style="height: 215px; width: 320px;"
+            onclick="mudar()" src="../img/beneficios.png" alt="beneficios">
+            <img  style="height: 215px; width: 320px;"
+            onclick="mudar()" src="../img/origem.png" alt="origem">
         </div>
         <div class="overlay">
             <div class="overlay-content">
@@ -53,7 +61,7 @@
                 <H3 style="color: black;">ROTINA DE TREINO DE MUSCULAÇÃO COM BASE NA SUA ROTINA. 😱</H3>
             </div>
             <div class="quest">
-                 <div class="questFilho">
+                <div class="questFilho">
                     <div class="elementos">
                         <div style="margin-right: 250px;">
                             <h3 style="color: black;">Vamos testar seu <span
@@ -67,14 +75,17 @@
                                 <button onclick="legpress()">LegPress</button><BR>
                                 <button onclick="jantar()">Cadeira de jantar</button><BR>
                                 <button onclick="extensora()">Cadeira Extensora</button>
+
                             </div>
                         </div>
                     </div>
-                   <!-- <div>
-                        <div class="exibir" id="exibir" style="color: rgb(0, 0, 0); font-size: 25px; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-             "></div>
-                    </div>-->
-                </div> 
+                    <div class="exibir">
+                        <div id="exibir" style="color: rgb(0, 0, 0); font-size: 25px;
+                     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"></div>
+
+                    </div>
+
+                </div>
             </div>
             <footer>
                 <div class="divFooter">
@@ -85,7 +96,6 @@
             </footer>
         </div>
     </div>
-
 </body>
 
 </html>
@@ -99,10 +109,13 @@
 
     function legpress() {
         exibir.innerHTML = ''
-        exibir.innerHTML = `<p style="color:green; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">PARABÉNS!! VOCÊ ACERTOU 🥳</p> VOCÊ É BOM HEIN!! `
-        exibir.innerHTML += `Achou interessante? <br> Temos uma página exclsuivamente
-                           para o quiz,<br> contendo diversas perguntas para treinar
-                           e <br> exercitar seu conhecimento sobre academia!<br>`
+        exibir.innerHTML = `<p style="color:green; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">PARABÉNS!! VOCÊ ACERTOU 🥳</p>
+                             VOCÊ É BOM HEIN!! Achou interessante?
+                             Temos uma página exclsuivamente para o quiz,
+                             contendo diversas perguntas para treinar e
+                             exercitar seu conhecimento sobre academia!<br><br>
+                             <a href="quiz.html"><span class="spanQuiz">Ir para o quiz!</span></a>
+`
     }
 
     function extensora() {
@@ -121,7 +134,7 @@
         window.location.href = "login.html"
     }
 
-    function mudar(){
-        window.location.href="sobre.html"
+    function mudar() {
+        window.location.href = "sobre.html"
     }
 </script>

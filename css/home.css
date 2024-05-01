@@ -5,7 +5,11 @@ h3{
 
 .titulo{
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
 }
 .subtitulo{
     display: flex;
@@ -21,9 +25,10 @@ h3{
 }
 
 .start{
-    background-color: white;
-    height: 90PX;
-    width: 90PX;
+    display: flex;
+    margin-left: 70px;
+    margin-right: -50px;
+    padding: 20px;
 }
 
 .start img{
@@ -40,16 +45,8 @@ h3{
     padding: 2px;
 }
 
-.imagens img {
-    height: 200px;
-    width: 310px;
-    border-radius: 20px;
-}
-
 .imagens img:hover{
     cursor: pointer;
-    height: 230px;
-    width: 320px;
 }
 
 .textos {
@@ -58,6 +55,7 @@ h3{
     justify-content: space-around;
     margin-left: 35px;
     margin-right: 50px;
+    margin-top: 20px;
     padding: 18px;
 }
 
@@ -91,7 +89,6 @@ h2{
 .quest {
     display: flex;
     padding: 5px;
-    margin-left: 10px;
 }
 
 .quest img{
@@ -102,11 +99,12 @@ h2{
 
 .questFilho{
     display: flex;
-    justify-content: space-evenly;
     padding: 10px;
     margin: 10px;
     background-color: white;
-    width: 100%;
+    width: 30%;
+    border-radius: 20px;
+       
 }
 
 button {
@@ -116,6 +114,7 @@ button {
     width: 200px;
     border: 0px solid;
     font-weight: bold;
+    height: 25px;
 }
 
 button:hover{
@@ -140,6 +139,33 @@ footer {
     display: flex;
     flex-direction: column;
     margin-right: 650px;
+}
+
+.exibir{
+    background-color: #7272D0;
+   display: flex;
+   margin-left: -600px;
+   height: 100px;
+   width: 1000px;
+   margin-top: 40px;
+   border-radius: 20px;
+
+}
+
+#exibir{
+    background-color: #7272D0;
+    display: flex;
+   flex-direction: column;
+    height: 300px;
+    width: 600px;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.spanQuiz:hover{
+ cursor: pointer;
+ color:#3022CF;
+ text-decoration: none;
 }
 
 
