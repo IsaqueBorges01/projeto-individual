@@ -29,9 +29,9 @@
             <H3>E DECIDIRÁ QUAL DOS 2 ABAIXO VOCÊ QUER SER:</H3>
         </div>
         <div class="start">
-          <img src="../img/bombado.png.png" alt="">
-          <img src="../img/vs.png" alt="">
-          <img src="../img/frango.png" alt="">
+            <img src="../img/bombado.png.png" alt="">
+            <img src="../img/vs.png" alt="">
+            <img src="../img/frango.png" alt="">
 
         </div>
         <div class="subtitulo">
@@ -47,12 +47,9 @@
         </div>
 
         <div class="imagens">
-            <img  style="height: 190px; width: 290px;"
-            onclick="mudar()" src="../img/conceito.png" alt="conceito">
-            <img style="height: 215px; width: 320px;"
-            onclick="mudar()" src="../img/beneficios.png" alt="beneficios">
-            <img  style="height: 215px; width: 320px;"
-            onclick="mudar()" src="../img/origem.png" alt="origem">
+            <img style="height: 190px; width: 290px;" onclick="mudar()" src="../img/conceito.png" alt="conceito">
+            <img style="height: 215px; width: 320px;" onclick="mudar()" src="../img/beneficios.png" alt="beneficios">
+            <img style="height: 215px; width: 320px;" onclick="mudar()" src="../img/origem.png" alt="origem">
         </div>
         <div class="overlay">
             <div class="overlay-content">
@@ -64,26 +61,53 @@
                 <div class="questFilho">
                     <div class="elementos">
                         <div style="margin-right: 250px;">
-                            <h3 style="color: black;">Vamos testar seu <span
+                            <h3 style="color: white;">Vamos testar seu <span
                                     style="color: #3022CF;">conhecimento</span>?<br> Tente responder a
                                 perguta abaixo:</h3><br>
                             <img src="../img/legpress.png" alt="legpress">
-                            <h4 style="color: rgb(0, 0, 0); font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-             ">Qual o nome do exercício acima?</h4>
+                        </div>
+                        <div style="margin-top: 60px; margin-left: -110px;">
+                            <h4 style="color: white; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+             ">Qual o nome do exercício ao lado?</h4>
                             <div class="botoes">
-                                <button onclick="flexora()">Cadeira Flexora</button><BR>
+                                <button onclick="errar()">Cadeira Flexora</button><BR>
                                 <button onclick="legpress()">LegPress</button><BR>
-                                <button onclick="jantar()">Cadeira de jantar</button><BR>
-                                <button onclick="extensora()">Cadeira Extensora</button>
+                                <button onclick="errar()">Cadeira de jantar</button><BR>
+                                <button onclick="errar()">Cadeira Extensora</button>
 
                             </div>
                         </div>
                     </div>
-                    <div class="exibir">
-                        <div id="exibir" style="color: rgb(0, 0, 0); font-size: 25px;
-                     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"></div>
+                    <dialog id="parabens">
+                        <div class="modal">
+                            <p style="color: green;">PARABÉNS, VOCÊ ACERTOU!!</p>
+                            <p id="p">NÓS TEMOS UMA PÁGINA EXCLUSIVAMENTE<BR>
+                                PARA O QUIZ, FICOU INTERESSADO?</p>
 
-                    </div>
+                            <img style="width: 5vw; margin-bottom: 5vh; height: 9vh;" src="../img/verificado.png"
+                                alt="verificado">
+
+                        </div>
+                        <div id="btn">
+                            <button style="margin-right: 10px;" onclick="logar()">IR PARA O QUIZ</button>
+                            <button style="margin-left: 10px;" onclick="tentar()">SAIR</button>
+                        </div>
+                    </dialog>
+
+                    <dialog id="erro">
+                        <div class="modal" style="padding: 5px;">
+                            <p style="color: red;" id="p">RESPOSTA INCORRETA! </p>
+                            <img style="width: 5vw; margin-bottom: 5vh; height: 9vh;" src="../img/cruz.png"
+                                alt="verificado">
+                        </div>
+                        <div id="btn"
+                            style="display: flex; flex-direction: row;margin-top: 80px; margin-left: -9vw; margin-right: -1vw;">
+                            <button style="margin-left: 8vw; margin-top: -8vh; margin-right: -7vw;"
+                                onclick="tentar()">TENTAR
+                                NOVAMENTE</button>
+                            <button style="margin-left: 8vw; margin-top: -8vh;" onclick="home()">SAIR</button>
+                        </div>
+                    </dialog>
 
                 </div>
             </div>
@@ -101,40 +125,30 @@
 </html>
 
 <script>
-    function flexora() {
-        exibir.innerHTML = ''
-        exibir.innerHTML = `<p style="color:red;">Resposta incorreta ☹️</p>
-                          Tente novamente!`
+    function errar() {
+        erro.showModal()
     }
 
     function legpress() {
-        exibir.innerHTML = ''
-        exibir.innerHTML = `<p style="color:green; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">PARABÉNS!! VOCÊ ACERTOU 🥳</p>
-                             VOCÊ É BOM HEIN!! Achou interessante?
-                             Temos uma página exclsuivamente para o quiz,
-                             contendo diversas perguntas para treinar e
-                             exercitar seu conhecimento sobre academia!<br><br>
-                             <a href="quiz.html"><span class="spanQuiz">Ir para o quiz!</span></a>
-`
+        parabens.showModal()
+
+    }
+    function tentar() {
+        erro.close()
+        parabens.close()
     }
 
-    function extensora() {
-        exibir.innerHTML = ''
-        exibir.innerHTML = `<p style="color:red;">Resposta incorreta ☹️</p>
-                          Tente novamente!`
-    }
-
-    function jantar() {
-        exibir.innerHTML = ''
-        exibir.innerHTML = `<p style="color:red;">Resposta incorreta ☹️</p>
-                          Tente novamente!`
-    }
 
     function logar() {
+        alert(`Você precisa fazer o login primeiro!`)
         window.location.href = "login.html"
     }
 
     function mudar() {
         window.location.href = "sobre.html"
+    }
+
+    function home() {
+        window.location.href = "home.html"
     }
 </script>

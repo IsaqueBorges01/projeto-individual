@@ -89,6 +89,8 @@ h2{
 .quest {
     display: flex;
     padding: 5px;
+    justify-content: center;
+    align-items: center;
 }
 
 .quest img{
@@ -101,9 +103,10 @@ h2{
     display: flex;
     padding: 10px;
     margin: 10px;
-    background-color: white;
-    width: 30%;
+    background-color: transparent;
+    width: 25%;
     border-radius: 20px;
+    margin-left: -300px;
        
 }
 
@@ -137,35 +140,49 @@ footer {
 
 .elementos{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     margin-right: 650px;
 }
 
-.exibir{
-    background-color: #7272D0;
-   display: flex;
-   margin-left: -600px;
-   height: 100px;
-   width: 1000px;
-   margin-top: 40px;
-   border-radius: 20px;
-
-}
-
-#exibir{
-    background-color: #7272D0;
+.modal{
     display: flex;
-   flex-direction: column;
-    height: 300px;
-    width: 600px;
-    padding: 10px;
-    border-radius: 20px;
-}
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+     color: black;
+     font-weight: bold;
+     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+ }
+ 
+ #erro{
+     border-radius: 15px;
+     background-color: white;
+     border: none;
+     height: 35vh;
+     width: 24%;
+     overflow: hidden;
+     padding: -5px;
+ }
+ 
+ #parabens{
+     border-radius: 15px;
+     background-color: white;
+     border: none;
+     height: 40vh;
+     width: 25%;
+     overflow: hidden;
+     padding: 5px;
+     
+ }
+ 
+ #btn button{
+   height: 7vh;
+ }
 
-.spanQuiz:hover{
- cursor: pointer;
- color:#3022CF;
- text-decoration: none;
-}
-
-
+ #btn{
+    display: flex;
+    margin: 10px;
+    margin-top: -10px;
+ }
+ 

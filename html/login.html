@@ -31,13 +31,22 @@
             <h2>LOGIN</h2>
             <input id="input_email" placeholder="Insira seu email"><br>
             <input id="input_senha" type="password" placeholder="Insira sua senha"><br>
-            <button onclick="logar()">Logar</button><br><br>
+            <button onclick="logar()">Entrar</button><br><br>
             <p style="color: white; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Não possui
                 um login? <a style="color: #3022CF;" href="cadastro.html">Cadastre-se</a></p>
         </div>
         <div class="exibir" id="exibir"
             style="color: red; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"></div>
+            <dialog id="logado">
+                <div class="modal">
+                    <p id="p">LOGIN EFETUADO COM SUCESSO!</p>
+                        <p>BEM VINDO!</p>
+                    <img style="width: 5vw; margin-bottom: 5vh;" src="../img/verificado.png" alt="verificado">
+                        
+                </div><button style="margin-left: 8vw; margin-top: -8vh;" onclick="home()">OK</button>
+            </dialog>
     </div>
+
     <footer>
         <div class="divFooter">
             <h3>PRIVACY POLITIC | TERMS AND CONDITIONS | COOKIES</h3>
@@ -77,13 +86,14 @@
             exibir.innerHTML = `Senha incorreta!`
             return
         }
-        alert(`Login efetuado com sucesso! Bem vindo!`)
-        window.location.href="home.html"
+        logado.showModal()
+       
     }
 
     
         function home(){
             window.location.href="home.html"
         }
+    
     
 </script>

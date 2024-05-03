@@ -43,6 +43,7 @@ button{
 button:hover{
      transition: 0.03s;
     background-color: #584eca;
+    cursor: pointer;
 }
 
 footer {
@@ -72,4 +73,30 @@ h3{
 
 .img{
  margin-top: 20px;
+}
+
+.modal{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+    color: black;
+    font-weight: bold;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
+}
+
+#logado{
+    border-radius: 15px;
+    background-color: white;
+    border: none;
+    height: 38vh;
+    width: 25%;
+    overflow: hidden;
+    padding: -5px;
+    
+}
+
+h2{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
