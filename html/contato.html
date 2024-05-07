@@ -23,7 +23,7 @@
         </nav>
     </div>
     <div class="start">
-        <img src="../img/frango.png" alt="">
+        <!-- <img src="../img/frango.png" alt=""> -->
         <div class="container">
 
             <h2>FALE CONOSCO</h2>
@@ -48,8 +48,7 @@
             </div><button style="margin-left: 8vw; margin-top: -100px;" onclick="contato()">OK</button>
         </dialog>
         <div class="frango">
-            <img src="../img/bombado.png.png" alt=""><br>
-            <div style="margin: 75px; margin-top: -10px ;color: red; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"
+            <div style="margin: 75px;margin-left: -100px; margin-top: 200px ;color: red; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"
                 id="exibir"></div>
         </div>
     </div>
@@ -63,11 +62,18 @@
         const email = input_email.value
         const assunto = input_assunto.value
         const mensagem = input_mensagem.value
+        const arroba = email.indexOf('@')
+        const ponto = email.indexOf('.com')
+
+
 
         exibir.innerHTML = ''
 
         if (nome == '' || email == '' || assunto == '' || mensagem == '') {
             exibir.innerHTML = `Preencha todos os campos!`
+            return false
+        } else if(arroba <0 || ponto <0){
+            exibir.innerHTML = `Insira um email válido!`
             return false
         }
         msg.showModal()

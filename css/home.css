@@ -178,6 +178,7 @@ footer {
  
  #btn button{
    height: 7vh;
+   transition: 0.5s;
  }
 
  #btn{
