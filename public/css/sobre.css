@@ -17,7 +17,7 @@ section {
     margin: 20px;
     margin-bottom: 20px;
     width: 100vw;
-    height: 50vh;
+    height: 150vh;
 }
 .card img {
     max-width: 100%;
@@ -61,10 +61,10 @@ p{
     .overlay {
         position: relative;
         width: 100%;
-        height: 90vh;
+        height: 100vh;
         background: #7272D0;
         z-index: -1;
-        margin-top: -50vh; 
+        margin-top: -70vh; 
        
     }
 
@@ -76,7 +76,7 @@ p{
     }
 
     .divOverlay{
-        margin-top: 50vh;
+        margin-top: 60vh;
         display: flex;
         flex-direction: column;
         justify-content: center;
