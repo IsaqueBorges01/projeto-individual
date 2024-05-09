@@ -1,0 +1,48 @@
+body{
+    background: url('../assets/papel.png');
+    background-repeat: no-repeat;
+    background-size: cover
+    
+}
+
+h3{
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+input {
+    width: 220px;
+    border: 1px solid;
+    border-radius: 10px;
+    background: transparent;
+    height: 30px;
+    color: white;
+    font-weight: bold;
+    padding:5px;
+}
+
+button{
+    border:0px solid;
+    border-radius: 10px;
+    color:white;
+    font-weight: bold;
+    background-color: #3022cf;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 130px;
+    height: 35px;
+}
+
+button:hover{
+     transition: 0.03s;
+    background-color: #584eca;
+    cursor: pointer;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25vh;
+    background-color: #000000;
+}

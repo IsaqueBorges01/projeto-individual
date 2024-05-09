@@ -24,9 +24,11 @@
         </nav>
     </div>
 
-    Insira de quantos em quantos dias você faz musculação:<br>
-    <input id="dias_musc"><br><br>
-    <button onclick="exibir()">Exibir rotina mensal</button>
+    <div class="container">
+        <h3>Insira de quantos em quantos dias você faz musculação:</h3><br>
+        <input id="dias_musc" placeholder="Ex: 3"><br><br>
+        <button onclick="exibir()">Exibir rotina mensal</button>
+    </div>
     <div id="mostrar"></div>
 
     <body>
@@ -37,19 +39,17 @@
             }
 
             function exibir() {
-        const dias = Number(dias_musc.value)
+                const dias = Number(dias_musc.value)
 
-        mostrar.innerHTML = '';
+                mostrar.innerHTML = '';
 
-        for (let contador = 0; contador <= 29; contador+=1) {
-            if (contador % dias == 0) {
-                mostrar.innerHTML += `Dia ${contador +1} - Musculação<br>`
-            } else {
-                mostrar.innerHTML += `Dia ${contador +1} - Comer, dormir etc<br>`
+                for (let contador = 0; contador <= 29; contador += 1) {
+                    if (contador % dias == 0) {
+                        mostrar.innerHTML += `Dia ${contador + 1} - Musculação<br>`
+                    } else {
+                        mostrar.innerHTML += `Dia ${contador + 1} - Comer, dormir etc<br>`
+                    }
+                }
             }
-        }
-    }
-        
+
         </script>
-
-

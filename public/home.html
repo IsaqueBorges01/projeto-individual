@@ -24,16 +24,10 @@
     </div>
     <div class="container">
         <div class="titulo">
-            <h3>SEJA BEM VINDO A ACADEMIA <SPAN style="color: #3022CF;"> START!</SPAN>
-            <br><br>AQUI VOCÊ CONHECERÁ TUDO SOBRE ACADEMIA<br><br>
-            E DECIDIRÁ QUAL DOS 2 ABAIXO VOCÊ QUER SER:</H3>
+            <h3>DESAFIE SUA MENTE, FORTALEÇA SEU POTENCIAL.</h3>
+            <button style="margin-top: 5vh; margin-bottom: 5vh; height: 7vh; box-shadow: 2px 2px 2px;" onclick="quiz()">QUIZ</button>
         </div>
-        <div class="start">
-            <img src="./assets/bombado.png.png" alt="">
-            <img src="./assets/vs.png" alt="">
-            <img src="./assets/frango.png" alt="">
-
-        </div>
+       
         <div class="subtitulo">
             <h3>VENHA CONHECER OS PONTOS
                 SOBRE <span style="color: #3022CF;">ACADEMIA</span> QUE NÓS
@@ -57,7 +51,7 @@
                 <h3 style="color: black;">QUIZ SOBRE ACADEMIA PARA EXERCITAR SUA MENTE E SEU CONHECIMENTO. 🏋🏼</h3>
                 <H3 style="color: black;">ROTINA DE TREINO DE MUSCULAÇÃO COM BASE NA SUA ROTINA. 😱</H3>
             </div>
-            <div class="quest">
+            <div id="questionario" class="quest">
                 <div class="questFilho">
                     <div class="elementos">
                         <div style="margin-right: 250px;">
@@ -125,6 +119,10 @@
 </html>
 
 <script>
+    function quiz(){
+        window.location.href="#questionario"
+    }
+
     function errar() {
         erro.showModal()
     }
