@@ -1,14 +1,14 @@
-h2{
-    color: white;
+h2 {
+    color: #3022cf;
 }
 
-button{
-    border:0px solid;
+button {
+    border: 0px solid;
     border-radius: 10px;
-    color:white;
+    color: white;
     font-weight: bold;
     background-color: #3022cf;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     width: 130px;
     height: 35px;
     margin-top: 5vh;
@@ -19,17 +19,30 @@ button{
     margin-left: -2vw;
 }
 
-button:hover{
-     transition: 0.03s;
+button:hover {
+    transition: 0.03s;
     background-color: #584eca;
     cursor: pointer;
 }
 
-#question_container{
+#question_container {
     margin-top: 10vh;
 }
 
-.containerAll{
+#result-container {
+    display: none;
+    margin-left: 4vw;
+    color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border: 1px solid #3022cf;
+    width: 30vw;
+    height: 30vh;
+    margin-top: 10vh;
+    background-color: white;
+}
+
+
+#containerAll {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -37,32 +50,33 @@ button:hover{
     margin-top: 10vh;
     border: 1px solid #3022cf;
     width: 45vw;
-    height: 65vh;
+    height: 55vh;
     margin-left: 27vw;
+    background-color: white;
 }
 
-.modal{
+.modal {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-     color: black;
-     font-weight: bold;
-     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-     
- }
- 
- #informacoes{
-     border-radius: 15px;
-     background-color: white;
-     border: none;
-     height: 50vh;
-     width: 25%;
-     overflow: hidden;
-     padding: -5px;
-     border: 3px solid black;
- }
+    color: black;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
- .b{
+}
+
+#informacoes {
+    border-radius: 15px;
+    background-color: white;
+    border: none;
+    height: 50vh;
+    width: 25%;
+    overflow: hidden;
+    padding: -5px;
+    border: 3px solid black;
+}
+
+.b {
     margin-left: 5vw;
- }
+}

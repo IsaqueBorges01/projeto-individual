@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/rotina.css">
     <title>ROTINA</title>
-
 </head>
 
 <body>
@@ -23,33 +22,93 @@
             </ul>
         </nav>
     </div>
-
-    <div class="container">
-        <h3>Insira de quantos em quantos dias você faz musculação:</h3><br>
-        <input id="dias_musc" placeholder="Ex: 3"><br><br>
-        <button onclick="exibir()">Exibir rotina mensal</button>
+    <div>
+        <h2 style="text-align: center;">Olá usuário, seja bem vindo! Essa é a página onde você poderá<br>
+            Ter uma rotina de treino de musculação semanal feita por nós, vamos lá?</h2>
     </div>
-    <div id="mostrar"></div>
+    <div class="container">
+        <div>
+            <h3>Qual parte do corpo você quer focar para crescer?</h3><br>
+            <select id="select_escolha">
+                <option value="#">Selecione uma opção</option>
+                <option value="perna">Perna</option>
+                <option value="panturrilha">Panturrilha</option>
+                <option value="braço">Braço</option>
+                <option value="costas">Costas</option>
+                <option value="peito">Peito</option>
+                <option value="ombro">Ombro</option>
+            </select><br><br>
+            <button onclick="exibir()">Fazer rotina</button>
+        </div>
+        <div id="mostrar"></div>
+    </div>
 
-    <body>
+    <script>
+       function home() {
+    window.location.href = "home.html";
+}
 
-        <script>
-            function home() {
-                window.location.href = "home.html"
+function exibir() {
+    const escolha = select_escolha.value;
+
+    mostrar.innerHTML = '';
+
+    if (escolha == '#') {
+        mostrar.innerHTML = `<p style="color: red; font-size: 20; font-weight:bold;">
+            Preencha o campo corretamente</p>`;
+    } else {
+        const diasSemana = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
+
+        const descansoSemana = getRandomInt(1, 7); // Gerar um dia aleatório de descanso na semana
+        let diaDescanso = '';
+
+        for (let contador = 1; contador <= 7; contador++) {
+            const diaAtual = diasSemana[contador % 7]; // Circula pelos dias da semana
+
+            if (contador === descansoSemana) {
+                diaDescanso = diaAtual;
+                mostrar.innerHTML += `<p style="font-size: 18px; font-weight: bold; color: #3022cf;">${diaAtual} - Descanso</p><br>`;
+            } else {
+                mostrar.innerHTML += `<p style="font-size: 18px; font-weight: bold; color: #3022cf;">${diaAtual} - Treino de ${escolha}</p><br>`;
+                mostrar.innerHTML += gerarTreino(escolha);
             }
+        }
 
-            function exibir() {
-                const dias = Number(dias_musc.value)
+    }
+}
 
-                mostrar.innerHTML = '';
+function gerarTreino(musculo) {
+    let treino = '';
 
-                for (let contador = 0; contador <= 29; contador += 1) {
-                    if (contador % dias == 0) {
-                        mostrar.innerHTML += `Dia ${contador + 1} - Musculação<br>`
-                    } else {
-                        mostrar.innerHTML += `Dia ${contador + 1} - Comer, dormir etc<br>`
-                    }
-                }
-            }
+    if (musculo === 'perna') {
+        treino = 'Exercício 1: Agachamento - 3 séries de 10 repetições<br><br>' +
+                 'Exercício 2: Leg Press - 3 séries de 12 repetições<br><br>' +
+                 'Exercício 3: Cadeira Extensora - 3 séries de 12 repetições<br><br><br>';
+    } else if (musculo === 'panturrilha') {
+        treino = 'Exercício 1: Panturrilha no Leg Press - 3 séries de 15 repetições<br><br>' +
+                 'Exercício 2: Panturrilha no Smith - 3 séries de 12 repetições<br><br><br>';
+    } else if (musculo === 'braço') {
+        treino = 'Exercício 1: Rosca Direta - 3 séries de 10 repetições<br><br>' +
+                 'Exercício 2: Tríceps Pulley - 3 séries de 12 repetições<br><br><br>';
+    } else if (musculo === 'costas') {
+        treino = 'Exercício 1: Barra Fixa - 3 séries de 8 repetições<br><br>' +
+                 'Exercício 2: Remada Curvada - 3 séries de 10 repetições<br><br><br>';
+    } else if (musculo === 'peito') {
+        treino = 'Exercício 1: Supino Reto - 3 séries de 10 repetições<br><br>' +
+                 'Exercício 2: Crucifixo - 3 séries de 12 repetições<br><br><br>';
+    } else if (musculo === 'ombro') {
+        treino = 'Exercício 1: Desenvolvimento com Barra - 3 séries de 10 repetições<br><br>' +
+                 'Exercício 2: Elevação Lateral - 3 séries de 12 repetições<br><br><br>';
+    }
 
-        </script>
+    return treino;
+}
+
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+    </script>
+</body>
+
+</html>
