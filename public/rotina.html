@@ -23,12 +23,16 @@
         </nav>
     </div>
     <div>
-        <h2 style="text-align: center;">Olá usuário, seja bem vindo! Essa é a página onde você poderá<br>
-            Ter uma rotina de treino de musculação semanal feita por nós, vamos lá?</h2>
+        <h2 style="margin-left: 2vw; color: #3022cf;">Olá usuário, seja bem vindo! Essa é a página onde<br>
+            você poderá ter uma rotina de treino de musculação<br>
+             semanal feita por nós, vamos lá?</h2>
     </div>
+    <div id="container">
     <div class="container">
-        <div>
-            <h3>Qual parte do corpo você quer focar para crescer?</h3><br>
+        <div> <h3>Digite a quantidade de dias na semana que você deseja treinar</h3><br>
+            <input type="number" min="1" placeholder="Ex: 3" id="qtd_dias"> <br><br>
+            
+            <h3>Selecione o músculo que você deseja crescer:</h3><br>
             <select id="select_escolha">
                 <option value="#">Selecione uma opção</option>
                 <option value="perna">Perna</option>
@@ -39,75 +43,79 @@
                 <option value="ombro">Ombro</option>
             </select><br><br>
             <button onclick="exibir()">Fazer rotina</button>
-        </div>
-        <div id="mostrar"></div>
+        </div>   
     </div>
+     <div id="mostrar"></div>
+    </div>
+    <div id="erro"></div>
 
     <script>
        function home() {
-    window.location.href = "home.html";
-}
+            window.location.href = "home.html";
+        }
 
-function exibir() {
-    const escolha = select_escolha.value;
+        function exibir() {
+            const diasSemana = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
+            const escolha = select_escolha.value;
+            const dias = parseInt(qtd_dias.value); // Converter para número inteiro
 
-    mostrar.innerHTML = '';
+            mostrar.innerHTML = '';
+            erro.innerHTML = '';
 
-    if (escolha == '#') {
-        mostrar.innerHTML = `<p style="color: red; font-size: 20; font-weight:bold;">
-            Preencha o campo corretamente</p>`;
-    } else {
-        const diasSemana = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
-
-        const descansoSemana = getRandomInt(1, 7); // Gerar um dia aleatório de descanso na semana
-        let diaDescanso = '';
-
-        for (let contador = 1; contador <= 7; contador++) {
-            const diaAtual = diasSemana[contador % 7]; // Circula pelos dias da semana
-
-            if (contador === descansoSemana) {
-                diaDescanso = diaAtual;
-                mostrar.innerHTML += `<p style="font-size: 18px; font-weight: bold; color: #3022cf;">${diaAtual} - Descanso</p><br>`;
+            if (escolha == '#' || dias <= 0) { 
+                erro.innerHTML = `<p style="color: red; font-size: 20; font-weight:bold;">
+                    Preencha o campo corretamente</p>`;
             } else {
-                mostrar.innerHTML += `<p style="font-size: 18px; font-weight: bold; color: #3022cf;">${diaAtual} - Treino de ${escolha}</p><br>`;
-                mostrar.innerHTML += gerarTreino(escolha);
+                let contadorDia = 0;
+                let contadorTreino = 0;
+
+                for (let contador = 0; contador < (dias * 2); contador++) {
+                    const diaAtual = diasSemana[contadorDia % 7]; // Alternar entre os dias da semana
+                    contadorDia++;
+
+                    if (contador % dias != 0) { // Dia de treino
+                        mostrar.innerHTML += `<p style="font-size: 18px; font-weight: bold; color: #3022cf;">${diaAtual} - Treino de ${escolha}</p><br>`;
+                        mostrar.innerHTML += gerarTreino(escolha);
+                        contadorTreino++;
+                    } else { // Dia de descanso
+                        mostrar.innerHTML += `<p style="font-size: 18px; font-weight: bold; color: #3022cf;">${diaAtual} - Descanso</p><br>`;
+                    }
+
+                    if (contadorTreino === dias) { // Todos os dias de treino foram completados
+                        mostrar.innerHTML += `<p style="font-size: 18px; font-weight: bold; color: #3022cf;">${diasSemana[contadorDia % 7]} - Descanso</p><br>`;
+                        contadorDia++;
+                        contadorTreino = 0; // Reinicia o contador de treino
+                    }
+                }
             }
         }
 
-    }
-}
+        function gerarTreino(musculo) {
+            let treino = '';
 
-function gerarTreino(musculo) {
-    let treino = '';
+            if (musculo === 'perna') {
+                treino = 'Exercício 1: Agachamento - 3 séries de 10 repetições<br><br>' +
+                    'Exercício 2: Leg Press - 3 séries de 12 repetições<br><br>' +
+                    'Exercício 3: Cadeira Extensora - 3 séries de 12 repetições<br><br><br>';
+            } else if (musculo === 'panturrilha') {
+                treino = 'Exercício 1: Panturrilha no Leg Press - 3 séries de 15 repetições<br><br>' +
+                    'Exercício 2: Panturrilha no Smith - 3 séries de 12 repetições<br><br><br>';
+            } else if (musculo === 'braço') {
+                treino = 'Exercício 1: Rosca Direta - 3 séries de 10 repetições<br><br>' +
+                    'Exercício 2: Tríceps Pulley - 3 séries de 12 repetições<br><br><br>';
+            } else if (musculo === 'costas') {
+                treino = 'Exercício 1: Barra Fixa - 3 séries de 8 repetições<br><br>' +
+                    'Exercício 2: Remada Curvada - 3 séries de 10 repetições<br><br><br>';
+            } else if (musculo === 'peito') {
+                treino = 'Exercício 1: Supino Reto - 3 séries de 10 repetições<br><br>' +
+                    'Exercício 2: Crucifixo - 3 séries de 12 repetições<br><br><br>';
+            } else if (musculo === 'ombro') {
+                treino = 'Exercício 1: Desenvolvimento com Barra - 3 séries de 10 repetições<br><br>' +
+                    'Exercício 2: Elevação Lateral - 3 séries de 12 repetições<br><br><br>';
+            }
 
-    if (musculo === 'perna') {
-        treino = 'Exercício 1: Agachamento - 3 séries de 10 repetições<br><br>' +
-                 'Exercício 2: Leg Press - 3 séries de 12 repetições<br><br>' +
-                 'Exercício 3: Cadeira Extensora - 3 séries de 12 repetições<br><br><br>';
-    } else if (musculo === 'panturrilha') {
-        treino = 'Exercício 1: Panturrilha no Leg Press - 3 séries de 15 repetições<br><br>' +
-                 'Exercício 2: Panturrilha no Smith - 3 séries de 12 repetições<br><br><br>';
-    } else if (musculo === 'braço') {
-        treino = 'Exercício 1: Rosca Direta - 3 séries de 10 repetições<br><br>' +
-                 'Exercício 2: Tríceps Pulley - 3 séries de 12 repetições<br><br><br>';
-    } else if (musculo === 'costas') {
-        treino = 'Exercício 1: Barra Fixa - 3 séries de 8 repetições<br><br>' +
-                 'Exercício 2: Remada Curvada - 3 séries de 10 repetições<br><br><br>';
-    } else if (musculo === 'peito') {
-        treino = 'Exercício 1: Supino Reto - 3 séries de 10 repetições<br><br>' +
-                 'Exercício 2: Crucifixo - 3 séries de 12 repetições<br><br><br>';
-    } else if (musculo === 'ombro') {
-        treino = 'Exercício 1: Desenvolvimento com Barra - 3 séries de 10 repetições<br><br>' +
-                 'Exercício 2: Elevação Lateral - 3 séries de 12 repetições<br><br><br>';
-    }
-
-    return treino;
-}
-
-function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
+            return treino;
+        }
     </script>
 </body>
 

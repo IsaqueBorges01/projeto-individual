@@ -48,7 +48,7 @@ button:hover {
     justify-content: center;
     align-items: center;
     margin-top: 10vh;
-    border: 1px solid #3022cf;
+    border: 3px solid #3022cf;
     width: 45vw;
     height: 55vh;
     margin-left: 27vw;
@@ -79,4 +79,11 @@ button:hover {
 
 .b {
     margin-left: 5vw;
+}
+
+#score {
+    margin-left: 2vw;
+}
+#resultado {
+    margin-left: 2vw;
 }
