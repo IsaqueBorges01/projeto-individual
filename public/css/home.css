@@ -124,10 +124,53 @@ button {
     height: 25px;
 }
 
-button:hover{
+.botoes button:hover{
     background-color: #7272D0;
     cursor: pointer;
 }
+
+.button {
+    height: 50px;
+    width: 200px;
+    position: relative;
+    background-color: transparent;
+    cursor: pointer;
+    border: 2px solid white;
+    overflow: hidden;
+    border-radius: 30px;
+    color: white;
+    transition: all 0.5s ease-in-out;
+  }
+  
+  .btn-txt {
+    font-weight: 800;
+   
+  }
+  
+  .type1::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: all 0.5s ease-in-out;
+    background-color: #3022cf;
+    border-radius: 30px;
+    visibility: hidden; /* deixar invisivel a bolinha que ficara azul na div */
+    height: 1vh;
+    width: 1vw;
+    z-index: -1;
+  }
+  
+  .button:hover {
+    box-shadow: 1px 1px 200px #ffffff;
+    color: black;
+    border: none;
+  }
+  
+  .type1:hover::after {
+    visibility: visible;
+    transform: scale(100) translateX(2px);
+  }
 
 footer {
     background-color: #1f1e29;
@@ -168,6 +211,16 @@ footer {
      overflow: hidden;
      padding: -5px;
      border: 3px solid black;
+ }
+
+ #erro button:hover{
+    cursor: pointer;
+    background-color: #7272D0;
+ }
+
+ #parabens button:hover{
+    cursor: pointer;
+    background-color: #7272D0;
  }
  
  #parabens{
