@@ -55,16 +55,19 @@
         }
 
         function exibir() {
+            mostrar.innerHTML = '';
+
             const diasSemana = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
             const escolha = select_escolha.value;
-            const dias = parseInt(qtd_dias.value); // Converter para número inteiro
+            const dias = Number(qtd_dias.value); // Converter para número inteiro
 
             mostrar.innerHTML = '';
-            erro.innerHTML = '';
+            erro.innerHTML='';
 
-            if (escolha == '#' || dias <= 0) { 
-                erro.innerHTML = `<p style="color: red; font-size: 20; font-weight:bold;">
+            if (escolha == '#' || dias <= 0 || dias == '') { 
+                erro.innerHTML += `<p style="color: red; font-size: 20; font-weight:bold;">
                     Preencha o campo corretamente</p>`;
+                    return
             } else {
                 let contadorDia = 0;
                 let contadorTreino = 0;
@@ -91,6 +94,7 @@
         }
 
         function gerarTreino(musculo) {
+            mostrar.innerHTML = '';
             let treino = '';
 
             if (musculo === 'perna') {

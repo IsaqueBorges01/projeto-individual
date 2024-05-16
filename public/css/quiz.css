@@ -53,6 +53,7 @@ button:hover {
     height: 55vh;
     margin-left: 27vw;
     background-color: white;
+    padding: 10px;
 }
 
 .modal {
@@ -86,4 +87,8 @@ button:hover {
 }
 #resultado {
     margin-left: 2vw;
+}
+
+#logoQuiz {
+    height: 15vh;
 }
