@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/home.css">
+    <title>HOME</title>
+</head>
+
+<body>
+    <div class="navbar">
+        <img class="logo" src="./assets/logo.png" alt="Logo">
+        <nav class="elements">
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="sobre.html">SOBRE</a></li>
+                <li><a href="contato.html">CONTATO</a></li>
+                <li><a href="login.html">LOGIN</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="titulo">
+            <h3>DESAFIE SUA MENTE, FORTALEÇA SEU POTENCIAL.</h3>
+            <button style="margin-top: 5vh; margin-bottom: 5vh; height: 7vh; box-shadow: 2px 2px 2px;"
+             class="button type1" onclick="quiz()">QUIZ</button>
+        </div>
+       
+        <div class="subtitulo">
+            <h3>VENHA CONHECER OS PONTOS
+                SOBRE <span style="color: #3022CF;">ACADEMIA</span> QUE NÓS
+                ABORDAREMOS AQUI:
+            </h3>
+        </div>
+        <div class="textos">
+            <h3>CONCEITO:</h3>
+            <h3>BENEFÍCIOS:</h3>
+            <h3>ORIGEM:</h3>
+        </div>
+
+        <div class="imagens">
+            <img style="height: 190px; width: 290px;" onclick="mudar()" src="./assets/conceito.png" alt="conceito">
+            <img style="height: 225px; width: 320px;" onclick="mudar()" src="./assets/beneficios.png" alt="beneficios">
+            <img style="height: 215px; width: 320px;" onclick="mudar()" src="./assets/origem.png" alt="origem">
+        </div>
+        <div class="overlay">
+            <div class="overlay-content">
+                <h2>FUNCIONALIDADES EXTRAS:</h2>
+                <h3 style="color: black;">QUIZ SOBRE ACADEMIA PARA EXERCITAR SUA MENTE E SEU CONHECIMENTO. 🏋🏼</h3>
+                <H3 style="color: black;">ROTINA DE TREINO DE MUSCULAÇÃO FEITA POR NÓS 😱</H3>
+            </div>
+            <footer>
+                <div class="divFooter">
+                    <h3>PRIVACY POLITIC | TERMS AND CONDITIONS | COOKIES</h3>
+                    <h5 style="color: white; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            ">©️ All Copyright 2024 by Academia Start</h5>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    function quiz(){
+        alert(`Você precisa se logar para entrar!`)
+        window.location.href="login.html"
+    }
+
+    function errar() {
+        erro.showModal()
+    }
+
+    function legpress() {
+        parabens.showModal()
+
+    }
+    function tentar() {
+        erro.close()
+        parabens.close()
+    }
+
+
+    function logar() {
+        alert(`Você precisa fazer o login primeiro!`)
+        window.location.href = "login.html"
+    }
+
+    function mudar() {
+        window.location.href = "sobre.html"
+    }
+
+    function home() {
+        window.location.href = "index.html"
+    }
+</script>

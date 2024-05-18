@@ -84,7 +84,7 @@ button:hover{
 .card {
     position: relative;
     width: 30vw;
-    height: 30vh;
+    height: 32vh;
     background-color: #f2f2f2;
     border-radius: 10px;
     display: flex;

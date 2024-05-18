@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/cadastro.css">
+    <script src="./js/sessao.js"></script>
 
     <title>CADASTRO</title>
 </head>
@@ -15,9 +16,8 @@
         <img class="logo" onclick="home()" src="./assets/logo.png" alt="Logo">
         <nav class="elements">
             <ul>
-                <li><a href="home.html">HOME</a></li>
+                <li><a href="index.html">HOME</a></li>
                 <li><a href="sobre.html">SOBRE</a></li>
-                <li><a href="quiz.html">QUIZ</a></li>
                 <li><a href="contato.html">CONTATO</a></li>
                 <li><a href="login.html">LOGIN</a></li>
             </ul>
@@ -33,19 +33,24 @@
             <input id="input_email" placeholder="Insira seu email"><br>
             <input id="input_senha" type="password" placeholder="Insira sua senha"><br>
             <input id="input_confirmar" type="password" placeholder="Confirme sua senha"><br>
-            <button onclick="Cadastrar()">Cadastrar</button><br><br>
+            <button onclick="cadastrar()">Cadastrar</button><br><br>
             <p style="color: white; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Já tem um
                 login? <a style="color: #3022CF;" href="login.html">Login</a></p>
         </div>
         <div class="exibir" id="exibir"
             style="color: red; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"></div>
+            <div class="mostrar"></div>
 
-        <dialog id="cadastro">
+        <div id="div_aguardar" class="loading-div">
+            <img src="./assets/circle-loading.gif" id="loading-gif" />
+        </div>
+
+         <dialog id="cadastro">
             <div class="modal">
                 <p id="p">CADASTRO EFETUADO COM SUCESSO!</p>
                 <img style="width: 5vw; margin-bottom: 5vh;" src="./assets/verificado.png" alt="verificado">
             </div><button style="margin-left: 8vw; margin-top: -8vh;" onclick="login()">OK</button>
-        </dialog>
+        </dialog> 
 
     </div>
     <footer>
@@ -59,7 +64,7 @@
 
 </html>
 
-<script>
+<!-- <script>
     function Cadastrar() {
         const nome = input_nome.value
         const email = input_email.value
@@ -115,5 +120,80 @@
 
     function home() {
         window.location.href = "home.html"
+    }
+</script> -->
+
+<script>
+    function cadastrar() {
+        aguardar();
+
+        exibir.innerHTML='';
+
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var nomeVar = input_nome.value;
+        var emailVar = input_email.value;
+        var senhaVar = input_senha.value;
+        var confirmacaoSenhaVar = input_confirmar.value;
+
+        if (
+            nomeVar == "" ||
+            emailVar == "" ||
+            senhaVar == "" ||
+            confirmacaoSenhaVar == ""
+        ) {
+
+            exibir.innerHTML = `Preencha todos os campos!`;
+
+            finalizarAguardar();
+            return false;
+        } else {
+            setInterval(sumirMensagem, 5000);
+        }
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    cadastro.showModal()
+
+                    limparFormulario();
+                    finalizarAguardar();
+                } else {
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                finalizarAguardar();
+            });
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        div_aguardar.style.display = "none";
+    }
+
+    function home() {
+        window.location.href = "index.html"
+    }
+
+    function login() {
+        window.location.href = "login.html"
     }
 </script>

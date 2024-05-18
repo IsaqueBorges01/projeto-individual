@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/login.css">
+    <script src="./js/sessao.js"></script>
 
     <title>LOGIN</title>
 </head>
@@ -15,9 +16,8 @@
         <img class="logo" onclick="home()" src="./assets/logo.png" alt="Logo">
         <nav class="elements">
             <ul>
-                <li><a href="home.html">HOME</a></li>
+                <li><a href="index.html">HOME</a></li>
                 <li><a href="sobre.html">SOBRE</a></li>
-                <li><a href="quiz.html">QUIZ</a></li>
                 <li><a href="contato.html">CONTATO</a></li>
                 <li><a href="login.html">LOGIN</a></li>
             </ul>
@@ -31,7 +31,7 @@
             <h2>LOGIN</h2>
             <input id="input_email" placeholder="Insira seu email"><br>
             <input id="input_senha" type="password" placeholder="Insira sua senha"><br>
-            <button onclick="logar()">Entrar</button><br><br>
+            <button onclick="entrar()">Entrar</button><br><br>
             <p style="color: white; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Não possui
                 um login? <a style="color: #3022CF;" href="cadastro.html">Cadastre-se</a></p>
         </div>
@@ -43,7 +43,7 @@
                         BEM VINDO!</p>
                     <img style="width: 5vw; margin-bottom: 5vh;" src="./assets/verificado.png" alt="verificado">
                         
-                </div><button style="margin-left: 8vw; margin-top: -8vh;" onclick="home()">OK</button>
+                </div><button style="margin-left: 8vw; margin-top: -8vh;" onclick="quiz()">OK</button>
             </dialog>
     </div>
 
@@ -57,7 +57,7 @@
 </body>
 
 </html>
-<script>
+<!-- <script>
     function logar() {
         const email = input_email.value
         const senha = input_senha.value
@@ -92,8 +92,82 @@
 
     
         function home(){
-            window.location.href="home.html"
+            window.location.href="index.html"
         }
     
     
+</script> -->
+
+<script>
+
+function entrar() {
+    // aguardar();
+
+    var emailVar = input_email.value;
+    var senhaVar = input_senha.value;
+
+    if (emailVar == "" || senhaVar == "") {
+        
+        exibir.innerHTML = "Preencha todos os campos!";
+        // finalizarAguardar();
+        return false;
+    }
+
+    console.log("FORM LOGIN: ", emailVar);
+    console.log("FORM SENHA: ", senhaVar);
+
+    fetch("/usuarios/autenticar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            emailServer: emailVar,
+            senhaServer: senhaVar
+        })
+    }).then(function (resposta) {
+        console.log("ESTOU NO THEN DO entrar()!")
+
+        if (resposta.ok) {
+            console.log(resposta);
+
+            resposta.json().then(json => {
+                console.log(json);
+                console.log(JSON.stringify(json));
+                sessionStorage.EMAIL_USUARIO = json.email;
+                sessionStorage.NOME_USUARIO = json.nome;
+                sessionStorage.ID_USUARIO = json.id;
+                sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+
+                setTimeout(function () {
+                    logado.showModal()
+                }, 1000); // apenas para exibir o loading
+
+            });
+
+        } else {
+                exibir.innerHTML = 'Email e/ou senha inválidos!'
+            console.log("Houve um erro ao tentar realizar o login!");
+
+            resposta.text().then(texto => {
+                console.error(texto);
+                finalizarAguardar(texto);
+            });
+        }
+
+    }).catch(function (erro) {
+        console.log(erro);
+    })
+
+    return false;
+}
+
+function sumirMensagem() {
+    cardErro.style.display = "none"
+}
+
+function quiz() {
+        window.location.href = "quiz.html"
+    }
+
 </script>
