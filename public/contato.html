@@ -36,13 +36,13 @@
                 <input style="height: 90px;" id="input_mensagem"
                     placeholder="Ex: O que treinar nos dias da semana?"><br><br>
             </div>
-            <button onclick="enviar()">Enviar</button>
+            <button onclick="cadastrar()">Enviar</button>
 
         </div>
         <dialog id="msg">
             <div class="modal">
                 <p id="p">MENSAGEM ENVIADA COM SUCESSO!</p><br>
-                <img style="width: 5vw;height: 9vh; margin-bottom: 5vh;" src="./assets/verificado.png" alt="verificado">
+                <img style="width: 5vw;height: 11vh; margin-bottom: 5vh;" src="./assets/verificado.png" alt="verificado">
             </div><button style="margin-left: 8vw; margin-top: -100px;" onclick="contato()">OK</button>
         </dialog>
         <div class="frango">
@@ -55,29 +55,61 @@
 
 </html>
 <script>
-    function enviar() {
-        const nome = input_nome.value
-        const email = input_email.value
-        const assunto = input_assunto.value
-        const mensagem = input_mensagem.value
-        const arroba = email.indexOf('@')
-        const ponto = email.indexOf('.com')
+    function cadastrar() {
+        var nomeVar = input_nome.value
+        var emailVar = input_email.value
+        var assuntoVar = input_assunto.value
+        var mensagemVar = input_mensagem.value
+        var arrobaVar =  emailVar.indexOf('@')
+        var pontoVar = emailVar.indexOf('.com')
 
 
 
         exibir.innerHTML = ''
 
-        if (nome == '' || email == '' || assunto == '' || mensagem == '') {
+        if (nomeVar == '' || emailVar == '' || assuntoVar == '' || mensagemVar == '') {
+
             exibir.innerHTML = `Preencha todos os campos!`
-            return false
-        } else if(arroba <0 || ponto <0){
+
+            return false;
+        } else if(arrobaVar <0 || pontoVar <0){
             exibir.innerHTML = `Insira um email válido!`
             return false
         }
-        msg.showModal()
 
+        // Enviando o valor da nova input
+        fetch("/empresas/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                assuntoServer: assuntoVar,
+                mensagemServer: mensagemVar,
 
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    msg.showModal()
+
+                } else {
+                    throw "Houve um erro ao tentar mandar a mensagem!";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+
+        return false;
     }
+
 
     function home() {
         window.location.href = "index.html"
@@ -86,4 +118,31 @@
     function contato() {
         window.location.href = "contato.html"
     }
+
+
+
+    // function enviar() {
+    //     const nome = input_nome.value
+    //     const email = input_email.value
+    //     const assunto = input_assunto.value
+    //     const mensagem = input_mensagem.value
+    //     const arroba = email.indexOf('@')
+    //     const ponto = email.indexOf('.com')
+
+
+
+    //     exibir.innerHTML = ''
+
+    //     if (nome == '' || email == '' || assunto == '' || mensagem == '') {
+    //         exibir.innerHTML = `Preencha todos os campos!`
+    //         return false
+    //     } else if(arroba <0 || ponto <0){
+    //         exibir.innerHTML = `Insira um email válido!`
+    //         return false
+    //     }
+    //     msg.showModal()
+
+
+    // }
+
 </script>

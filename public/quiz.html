@@ -66,8 +66,8 @@
         </dialog>
 
         <div style="display: flex; display: none;" id="dash">
-            <div style="display: flex; justify-content: center; align-items: center;">
-                <canvas id="myChart" style="position: relative; height: 40vh; width: 40vw;margin-left: 10vw; margin-top: 5vh;"></canvas>
+            <div style="display: flex; justify-content: center;margin-top: 5vh; align-items: center;height: 60vh; width: 40vw;">
+                <canvas id="myChart" style="position: relative;margin-left: 10vw; margin-top: 5vh;"></canvas>
             </div>
         </div>
     </div>
@@ -126,35 +126,30 @@
                 <button onclick="quiz()">Tentar novamente</button>
                 <button onclick="home()">Sair</button>`;
 
-            // Atualiza o gráfico com todas as perguntas
-            const labels = ['Erros', 'Acertos'];
+
+// Labels para o gráfico de pizza
+const labels = ['Erros', 'Acertos'];
+
+// Dados para o gráfico
 const data = {
     labels: labels,
     datasets: [{
         label: 'Pontuação:',
         backgroundColor: ['red', '#3022cf'],
-        
         borderWidth: 2,
-        data: [(questions.length - score) / questions.length, score / questions.length],
+        // Cálculo dos dados para o gráfico de pizza
+        data: [
+            (questions.length - score) / questions.length, // Proporção de erros
+            score / questions.length                      // Proporção de acertos
+        ],
     }]
 };
 
+// Configuração do gráfico
 const config = {
-    type: 'bar',
+    type: 'pie',
     data: data,
     options: {
-        scales: {
-            y: {
-                min: 0,
-                max: 1,
-                ticks: {
-                    stepSize: 0.2,
-                    callback: function (value) {
-                        return (value * 100) + '%';
-                    }
-                }
-            }
-        },
         plugins: {
             legend: {
                 display: true,
@@ -166,11 +161,11 @@ const config = {
                 callbacks: {
                     label: function (context) {
                         let label = context.label || '';
-
                         if (label) {
                             label += ': ';
                         }
-                        label += Math.round(context.parsed.y * 100) + '%';
+                        // Adicionando a porcentagem ao tooltip
+                        label += (context.raw * 10).toFixed(2);
                         return label;
                     }
                 }
@@ -179,11 +174,14 @@ const config = {
     }
 };
 
+// Selecionando o canvas do gráfico
 const canvas = document.getElementById('myChart');
 canvas.height = 150;
 canvas.width = 200;
 
+// Criando o gráfico
 new Chart(canvas, config);
+
 
 
         }

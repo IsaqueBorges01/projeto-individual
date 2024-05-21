@@ -36,5 +36,7 @@ alternativaQuiz varchar(100),
 fkPergunta int
 );
 
+select * from contato;
+select * from usuario;
 
 

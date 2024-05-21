@@ -125,7 +125,6 @@
 
 <script>
     function cadastrar() {
-        aguardar();
 
         exibir.innerHTML='';
 
@@ -135,6 +134,15 @@
         var emailVar = input_email.value;
         var senhaVar = input_senha.value;
         var confirmacaoSenhaVar = input_confirmar.value;
+        const arroba = emailVar.indexOf('@')
+        const ponto = emailVar.indexOf('.com')
+        const exclamacao = senhaVar.indexOf('!')
+        const arrobs = senhaVar.indexOf('@')
+        const velha = senhaVar.indexOf('#')
+        const cifrao = senhaVar.indexOf('$')
+        const ast = senhaVar.indexOf('*')
+        const comercial = senhaVar.indexOf('&')
+        const porcento = senhaVar.indexOf('%')
 
         if (
             nomeVar == "" ||
@@ -147,8 +155,34 @@
 
             finalizarAguardar();
             return false;
+        } else if (nomeVar.length <= 1) {
+            exibir.innerHTML = `Seu nome precisa conter<br>
+                        mais de 1 caracter!`
+            
+        } else if (arroba < 0 && ponto < 0) {
+            exibir.innerHTML = `Seu email precisa conter:<br>
+                        um "@" e um ".com"`
+           
+        } else if (arroba < 0 && ponto >= 0) {
+            exibir.innerHTML = `Seu email precisa conter
+                        um "@"`
+           
+        } else if (ponto < 0 && arroba >= 0) {
+            exibir.innerHTML = `Seu email precisa conter
+                        um ".com"`
+           
+        } else if (senhaVar.length < 10 || (exclamacao < 0 && arrobs < 0 && velha < 0 && cifrao < 0 && ast < 0 && comercial < 0 && porcento < 0)) {
+            exibir.innerHTML = `Sua senha deve conter<br>
+                        no mínimo 10 caracteres<br>
+                        pelo menos 1 caracter especial`
+                        return false
+
+        } else if (senhaVar != confirmacaoSenhaVar || confirmacaoSenhaVar != senhaVar) {
+            exibir.innerHTML = `Suas senhas precisam estar iguais!`
+           return false
+
         } else {
-            setInterval(sumirMensagem, 5000);
+            setInterval(sumirMensagem, 1000);
         }
 
         // Enviando o valor da nova input
