@@ -22,7 +22,7 @@
         </nav>
     </div>
     <div>
-        <h2 style="margin-left: 2vw; color: #7272D0;">Olá usuário, seja bem vindo! Essa é a página onde<br>
+        <h2 style="margin-left: 5vw;margin-top: 5vh; color: #7272D0;">Olá usuário, seja bem vindo! Essa é a página onde<br>
             você poderá ter uma rotina de treino de musculação<br>
             semanal feita por nós, vamos lá?</h2>
     </div>
@@ -32,7 +32,7 @@
                 <button onclick="exibir()">Fazer rotina</button>
             </div>
         </div>
-        <div id="mostrar"></div>
+        <div style="display: none;" id="mostrar"></div>
     </div>
     <div id="erro"></div>
 
@@ -44,7 +44,7 @@
         function exibir() {
             mostrar.innerHTML = '';
             erro.innerHTML = '';
-            
+            document.getElementById('mostrar').style.display = "block"
             mostrar.innerHTML += `<p style="color: #3022cf; font-size:25px">Segunda-feira: peito e tríceps</p><br><br>
                 Supino reto com barra: fazer 3 séries de 8 a 10 repetições.<br>
                 Peck deck: fazer 3 séries de 10 a 12 repetições.<br>

@@ -26,7 +26,9 @@ button:hover {
 }
 
 #question_container {
-    margin-top: 10vh;
+    margin-top: 1vh;
+    height: 10vh;
+    text-align: center;
 }
 
 #result-container {
@@ -50,7 +52,7 @@ button:hover {
     margin-top: 10vh;
     border: 3px solid #3022cf;
     width: 45vw;
-    height: 55vh;
+    height: 57vh;
     margin-left: 27vw;
     background-color: white;
     padding: 10px;

@@ -44,6 +44,7 @@ button {
     justify-content: center;
     align-items: center;
     margin-top: 5vh;
+    margin-left: -15vw;
     width: 70vw;
     height: 45vh;
     text-align: center;
@@ -53,7 +54,7 @@ button {
    background-color: white;
     color: black;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-   width: 70vw;
+   width: 60vw;
    height: 85vh;
    margin-top: -20vh;
    max-height: 100vh; 
@@ -81,3 +82,4 @@ input {
    margin-top: -15vh;
    margin-left: 17vw;
 }
+

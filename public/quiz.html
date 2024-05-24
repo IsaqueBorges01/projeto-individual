@@ -70,6 +70,9 @@
                 <canvas id="myChart" style="position: relative;margin-left: 10vw; margin-top: 5vh;"></canvas>
             </div>
         </div>
+        <div id="dashboard" style="display: none; margin-top: 30vh; margin-left: 5vw;">
+            <button onclick="dashboard()">IR PARA DASHBOARD</button>
+        </div>
     </div>
 
     <script>
@@ -115,16 +118,31 @@
             }
         }
 
-        function Resultado() {
+        async function Resultado() {
             document.getElementById("quiz-container").style.display = "none";
             document.getElementById("question_container").style.display = "none";
             document.getElementById("botoes").style.display = "none";
             document.getElementById("containerAll").style.display = "none";
             document.getElementById("dash").style.display = "block";
+            document.getElementById("dashboard").style.display = "block";
             document.getElementById("result-container").style.display = "block";
             document.getElementById("score").innerHTML = `Você acertou ${score} de ${questions.length} perguntas.<br>
                 <button onclick="quiz()">Tentar novamente</button>
                 <button onclick="home()">Sair</button>`;
+
+                const response = await fetch('/medidas/guardarPontuacao', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    score: score,
+                    totalQuestions: questions.length
+                })
+            });
+    
+            const result = await response.json();
+            console.log(result);
 
 
 // Labels para o gráfico de pizza
@@ -182,8 +200,6 @@ canvas.width = 200;
 // Criando o gráfico
 new Chart(canvas, config);
 
-
-
         }
 
         function home() {
@@ -202,6 +218,10 @@ new Chart(canvas, config);
         }
 
         Aparecer();
+
+        function dashboard(){
+            window.location.href="dashboard.html"
+        }
     </script>
 </body>
 

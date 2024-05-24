@@ -89,63 +89,33 @@ h2{
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
 }
-
 button {
-    border-radius: 10px;
-    background-color: #3022CF;
-    color: white;
-    width: 200px;
-    border: 0px solid;
-    font-weight: bold;
-    height: 25px;
-}
-
-.botoes button:hover{
-    background-color: #7272D0;
+    padding: 17px 40px;
+    border-radius: 50px;
     cursor: pointer;
-}
-
-.button {
-    height: 50px;
-    width: 200px;
-    position: relative;
-    background-color: transparent;
-    cursor: pointer;
-    border: 2px solid white;
-    overflow: hidden;
-    border-radius: 30px;
-    color: white;
-    transition: all 0.5s ease-in-out;
+    border: 0;
+    background-color: white;
+    box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 15px;
+    transition: all 0.5s ease;
   }
   
-  .btn-txt {
-    font-weight: 800;
-   
+  button:hover {
+    letter-spacing: 3px;
+    background-color: hsl(261deg 80% 48%);
+    color: hsl(0, 0%, 100%);
+    box-shadow: rgb(93 24 220) 0px 7px 29px 0px;
   }
   
-  .type1::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    transition: all 0.5s ease-in-out;
-    background-color: #3022cf;
-    border-radius: 30px;
-    visibility: hidden; /* deixar invisivel a bolinha que ficara azul na div */
-    height: 1vh;
-    width: 1vw;
-    z-index: -1;
-  }
-  
-  .button:hover {
-    box-shadow: 1px 1px 200px #ffffff;
-    color: white;
-    border: none;
-  }
-  
-  .type1:hover::after {
-    visibility: visible;
-    transform: scale(100) translateX(2px);
+  button:active {
+    letter-spacing: 3px;
+    background-color: hsl(261deg 80% 48%);
+    color: hsl(0, 0%, 100%);
+    box-shadow: rgb(93 24 220) 0px 0px 0px 0px;
+    transform: translateY(10px);
+    transition: 100ms;
   }
 
 footer {
@@ -189,15 +159,6 @@ footer {
      border: 3px solid black;
  }
 
- #erro button:hover{
-    cursor: pointer;
-    background-color: #7272D0;
- }
-
- #parabens button:hover{
-    cursor: pointer;
-    background-color: #7272D0;
- }
  
  #parabens{
      border-radius: 15px;

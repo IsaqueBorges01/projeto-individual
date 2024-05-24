@@ -1,35 +1,27 @@
 var database = require("../database/config");
 
-function buscarUltimasMedidas(idAquario, limite_linhas) {
 
-    var instrucaoSql = `SELECT 
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,
-                        momento,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico
-                    FROM medida
-                    WHERE fk_aquario = ${idAquario}
-                    ORDER BY id DESC LIMIT ${limite_linhas}`;
-
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
+function buscarUltimasMedidas(idPontuacao, limite_linhas) {
+    const query = `
+    SELECT * FROM medida WHERE idPontuacao = ${idPontuacao} ORDER BY momento DESC LIMIT ${limite_linhas}
+    `;
+    return database.query(query, [idPontuacao, limite_linhas]);
 }
 
-function buscarMedidasEmTempoReal(idAquario) {
+function buscarMedidasEmTempoReal(idPontuacao) {
+    const query = `
+    SELECT * FROM medida WHERE idPontuacao = ${idPontuacao} ORDER BY momento DESC LIMIT 1
+    `;
+    return database.query(query, [idPontuacao]);
+}
 
-    var instrucaoSql = `SELECT 
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico, 
-                        fk_aquario 
-                        FROM medida WHERE fk_aquario = ${idAquario} 
-                    ORDER BY id DESC LIMIT 1`;
-
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
+function guardarPontuacao(score, totalQuestions) {
+    var instrucao = `INSERT INTO pontuacao (score, totalQuestions) VALUES (${score}, ${totalQuestions})`;
+    return database.executar(instrucao);
 }
 
 module.exports = {
     buscarUltimasMedidas,
-    buscarMedidasEmTempoReal
-}
+    buscarMedidasEmTempoReal,
+    guardarPontuacao
+};
