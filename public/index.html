@@ -47,8 +47,8 @@
         <div class="overlay">
             <div class="overlay-content">
                 <h2>FUNCIONALIDADES EXTRAS:</h2>
-                <h3 style="color: black;">QUIZ SOBRE ACADEMIA PARA EXERCITAR SUA MENTE E SEU CONHECIMENTO. 🏋🏼</h3>
-                <H3 style="color: black;">ROTINA DE TREINO DE MUSCULAÇÃO FEITA POR NÓS 😱</H3>
+                <h3 style="color: black;">QUIZ SOBRE ACADEMIA PARA EXERCITAR SUA MENTE E SEU CONHECIMENTO!</h3>
+                <H3 style="color: black;">ROTINA DE TREINO DE MUSCULAÇÃO FEITA POR NÓS!</H3>
             </div>
             <footer>
                 <div class="divFooter">
@@ -59,13 +59,22 @@
             </footer>
         </div>
     </div>
+    <dialog id="msg">
+        <div class="modal">
+            <p id="p">VOCÊ PRECISA SE LOGAR PARA ENTRAR!</p><br>
+        </div><button style="margin-left: 6.5vw; margin-top: -100px;" onclick="entrar()">OK</button>
+    </dialog>
 </body>
 
 </html>
 
 <script>
+
     function quiz(){
-        alert(`Você precisa se logar para entrar!`)
+     msg.showModal()
+    }
+
+    function entrar(){
         window.location.href="login.html"
     }
 

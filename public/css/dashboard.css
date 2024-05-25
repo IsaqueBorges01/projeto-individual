@@ -13,7 +13,7 @@ body {
 }
 
 .dash-right .avisos {
-  width: 100%;
+  width: 30%;
   color: rgb(216, 216, 216);
   font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -73,6 +73,18 @@ body {
   background-color: #e6005a;
   width: 80px;
 }
+/* Estilos para o gráfico */
+.graph {
+  width: 400px; /* Largura do gráfico */
+  height: 400px; /* Altura do gráfico */
+  margin: 20px auto; /* Margem para centralizar o gráfico na página */
+}
+
+/* Estilos opcionais para o canvas do gráfico */
+#quizChart {
+  width: 100%;
+  height: 100%;
+}
 
 .publicacao {
   display: flex;
@@ -94,7 +106,8 @@ body {
 }
 
 .div-results .feed-container {
-  background-color: #212124;
+  background-color: transparent;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   border-radius: 5px;
   margin-bottom: 80px;
 }
@@ -115,7 +128,7 @@ body {
 }
 
 .dash {
-  width: 80%;
+  width: 50%;
   position: relative;
   top: 0;
   left: 20%;
@@ -128,7 +141,7 @@ body {
   /* border: 2px solid pink; */
   display: flex;
   flex-direction: column;
-  width: 70%;
+  width: 40%;
   margin: auto;
   margin-top: 10px;
   background-color: #212124;
@@ -423,5 +436,19 @@ canvas {
   text-align: center;
   padding: 10px 15px;
   margin-bottom: 100px;
+  cursor: pointer;
+}
+
+.btn-voltar {
+  width: 15vw;
+  background-color: #32b9cd;
+  color: white;
+  border-radius: 10px;
+  border: 0px solid;
+  text-align: center;
+  align-items: center;
+  padding: 10px 15px;
+  font-weight: bold;
+  height: 7vh;
   cursor: pointer;
 }
