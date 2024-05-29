@@ -451,4 +451,18 @@ canvas {
   font-weight: bold;
   height: 7vh;
   cursor: pointer;
+  margin-bottom: 5vh;
 }
+
+.btn-voltar:hover{
+  background-color: #5c6bc0;
+}
+
+.btn-logout:hover{
+  background-color: #5c6bc0;
+}
+
+#verHistorico:hover{
+  background-color:firebrick;
+}
+

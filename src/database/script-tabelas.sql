@@ -9,27 +9,21 @@ assunto varchar(45),
 mensagem varchar(100)
 );
 
-CREATE TABLE pontuacao (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    score INT NOT NULL,
-    totalQuestions INT NOT NULL,
-    data TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
---  create table pontuacao(
---  idPontuacao int primary key auto_increment,
---  pontuacaoQuiz int,
---  dtQuiz date
---  );
-
 create table usuario(
 id int primary key auto_increment,
 nome varchar(45),
 email varchar(100),
-senha varchar(45),
-fkPontuacao int,
-constraint chkUsuario foreign key (fkPontuacao)
-references pontuacao(id)
+senha varchar(45)
+);
+
+CREATE TABLE pontuacao (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    score INT NOT NULL,
+    totalQuestions INT NOT NULL,
+    data TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    fkUsuario int,
+	  constraint chkUsuarioPontuacao foreign key (fkUsuario)
+	  references usuario(id)
 );
 
 create table pergunta(
@@ -48,7 +42,6 @@ references pergunta(idPergunta)
 select * from contato;
 select * from usuario;
 select * from pontuacao;
-
 
 insert into pergunta values
 (default, "A proteína é importante para a recuperação muscular após o exercício?"),

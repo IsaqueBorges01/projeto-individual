@@ -39,18 +39,19 @@
         </div>
         <div class="exibir" id="exibir"
             style="color: red; font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"></div>
-            <div class="mostrar"></div>
+        <div class="mostrar"></div>
 
         <div id="div_aguardar" class="loading-div">
             <img src="./assets/circle-loading.gif" id="loading-gif" />
         </div>
 
-         <dialog id="cadastro">
+        <dialog id="cadastro">
             <div class="modal">
                 <p id="p">CADASTRO EFETUADO COM SUCESSO!</p>
                 <img style="width: 5vw; margin-bottom: 5vh;" src="./assets/verificado.png" alt="verificado">
-            </div><button style="margin-left: 8.5vw; margin-top: -6vh; margin-bottom: 1vh;" onclick="login()">OK</button>
-        </dialog> 
+            </div><button style="margin-left: 8.5vw; margin-top: -6vh; margin-bottom: 1vh;"
+                onclick="login()">OK</button>
+        </dialog>
 
     </div>
     <footer>
@@ -67,7 +68,7 @@
 <script>
     function cadastrar() {
 
-        exibir.innerHTML='';
+        exibir.innerHTML = '';
 
         //Recupere o valor da nova input pelo nome do id
         // Agora vá para o método fetch logo abaixo
@@ -85,6 +86,10 @@
         const comercial = senhaVar.indexOf('&')
         const porcento = senhaVar.indexOf('%')
 
+        // if (emailVar.indexOf(".com") > emailVar.indexOf("@")) {
+
+        // }
+
         if (
             nomeVar == "" ||
             emailVar == "" ||
@@ -99,28 +104,33 @@
         } else if (nomeVar.length <= 1) {
             exibir.innerHTML = `Seu nome precisa conter<br>
                         mais de 1 caracter!`
-                        return false;
+            return false;
         } else if (arroba < 0 && ponto < 0) {
             exibir.innerHTML = `Seu email precisa conter:<br>
                         um "@" e um ".com"`
-                        return false;
+            return false;
         } else if (arroba < 0 && ponto >= 0) {
             exibir.innerHTML = `Seu email precisa conter
                         um "@"`
-                        return false;
+            return false;
         } else if (ponto < 0 && arroba >= 0) {
             exibir.innerHTML = `Seu email precisa conter
                         um ".com"`
-                        return false;
+            return false;
+            
+        } else if(emailVar.indexOf(".com") < emailVar.indexOf("@")) {
+            exibir.innerHTML = `.com precisa estar depois do @`
+            return false
         } else if (senhaVar.length < 10 || (exclamacao < 0 && arrobs < 0 && velha < 0 && cifrao < 0 && ast < 0 && comercial < 0 && porcento < 0)) {
             exibir.innerHTML = `Sua senha deve conter<br>
                         no mínimo 10 caracteres<br>
                         pelo menos 1 caracter especial`
-                        return false
-                    
-        } else if (senhaVar != confirmacaoSenhaVar || confirmacaoSenhaVar != senhaVar) {
+            return false
+
+        } 
+        else if (senhaVar != confirmacaoSenhaVar || confirmacaoSenhaVar != senhaVar) {
             exibir.innerHTML = `Suas senhas precisam estar iguais!`
-           return false
+            return false
 
         } else {
             setInterval(sumirMensagem, 1000);

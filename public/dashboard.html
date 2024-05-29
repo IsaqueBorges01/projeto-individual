@@ -35,13 +35,13 @@
                 <div class="container">
                     <div class="div-form">
                         <br>
-                        <button onclick="listar()" style="width: 20vw; margin-top: 11vh;">VER HISTÓRICO DE PONTUAÇÃO</button>
+                        <button id="verHistorico" onclick="listar()" style="width: 20vw; margin-top: 11vh;">VER HISTÓRICO DE PONTUAÇÃO</button>
                     </div><br>
                     <div style="display: flex; flex-direction: row;">
-                        <div style="margin-left: 30vw;" class="div-results">
+                        <div style="margin-left: 41vw;" class="div-results">
                             <div id="feed_container" class="feed-container"></div>
                         </div>
-                        <div style="height: 45vh; width: 40vw; margin-top: -10vh;">
+                        <div style="height: 45vh; width: 50vw; margin-top: -10vh;">
                             <canvas id="myChart"></canvas>
                         </div>
                        
@@ -67,7 +67,7 @@
                     if (resposta.status == 204) {
                         var feed = document.getElementById("feed_container");
                         var mensagem = document.createElement("span");
-                        mensagem.innerHTML = `<p style="font-weight: bold">NENHUM RESULTADO ENCONTRADO PARA O USUÁRIO "${sessionStorage.NOME_USUARIO}"</p>`;
+                        mensagem.innerHTML = `<p style="font-weight: bold;color: #32b9cd;">NENHUM RESULTADO ENCONTRADO PARA O USUÁRIO "${sessionStorage.ID_USUARIO}"</p>`;
                         feed.appendChild(mensagem);
                         throw "Nenhum resultado encontrado!!";
                     }
@@ -81,14 +81,16 @@
                         let correctAnswers = 0;
                         let rounds = [];
                         let scores = [];
-                        feed.innerHTML=`<span style="color: #3022cf">OS ULTIMOS 3 REGISTROS:</span><br><br>`
+                        feed.innerHTML=`<span style="color: #32b9cd; font-size: 25px">OS ULTIMOS 3 REGISTROS:</span><br><br>`
 
                         for (let i = 0; i < resposta.length; i++) {
                             var publicacao = resposta[i];
-                            feed.innerHTML += `USUÁRIO: ${sessionStorage.NOME_USUARIO}<br>
-                             ID DA RODADA: ${i + 1} <br> QUANTIDADE DE ACERTOS: ${publicacao.score} <br>
-                             QUESTÕES TOTAIS: ${publicacao.totalQuestions} <br>
-                             DATA E HORA DA RODADA: ${publicacao.data}<br><br>`;
+                            feed.innerHTML += `<p style="font-weight: lighter; font-size: 20px;  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
+                             USUÁRIO: <b>${publicacao.nome}</b></b><br>
+                             EMAIL CADASTRADO: <b>${publicacao.email}</b></b><br>
+                             QUANTIDADE DE ACERTOS: <b>${publicacao.score}</b> <br>
+                             QUESTÕES TOTAIS: <b>${publicacao.totalQuestions}</b> <br>
+                             DATA E HORA DA RODADA: <b>${new Date(publicacao.data).toLocaleString("pt-BR")}</b><br><br></p>`;
 
                             correctAnswers = publicacao.score;
                             totalQuestions = publicacao.totalQuestions;
@@ -143,70 +145,70 @@
                         const canvas = document.getElementById('myChart');
                         new Chart(canvas, config);
 
-                        const lineData = {
-                            labels: rounds,
-                            datasets: [{
-                                label: 'Acertos',
-                                backgroundColor: '#3022cf',
-                                borderColor: '#3022cf',
-                                data: scores,
-                                fill: false,
-                                tension: 0.1
-                            }]
-                        };
+                        // const lineData = {
+                        //     labels: rounds,
+                        //     datasets: [{
+                        //         label: 'Acertos',
+                        //         backgroundColor: '#3022cf',
+                        //         borderColor: '#3022cf',
+                        //         data: scores,
+                        //         fill: false,
+                        //         tension: 0.1
+                        //     }]
+                        // };
 
-                        const lineConfig = {
-                            type: 'line',
-                            data: lineData,
-                            options: {
-                                scales: {
-                                    x: {
-                                        title: {
-                                            display: true,
-                                            text: 'Rodadas',
-                                            color: 'white'
-                                        },
-                                        ticks: {
-                                            color: 'white'
-                                        }
-                                    },
-                                    y: {
-                                        title: {
-                                            display: true,
-                                            text: 'Acertos',
-                                            color: 'white'
-                                        },
-                                        ticks: {
-                                            color: 'white',
-                                            beginAtZero: true
-                                        }
-                                    }
-                                },
-                                plugins: {
-                                    legend: {
-                                        display: true,
-                                        labels: {
-                                            color: 'white',
-                                        }
-                                    },
-                                    tooltip: {
-                                        callbacks: {
-                                            label: function (context) {
-                                                let label = context.dataset.label || '';
-                                                if (label) {
-                                                    label += ': ';
-                                                }
-                                                label += context.raw;
-                                                return label;
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        };
+                        // const lineConfig = {
+                        //     type: 'line',
+                        //     data: lineData,
+                        //     options: {
+                        //         scales: {
+                        //             x: {
+                        //                 title: {
+                        //                     display: true,
+                        //                     text: 'Rodadas',
+                        //                     color: 'white'
+                        //                 },
+                        //                 ticks: {
+                        //                     color: 'white'
+                        //                 }
+                        //             },
+                        //             y: {
+                        //                 title: {
+                        //                     display: true,
+                        //                     text: 'Acertos',
+                        //                     color: 'white'
+                        //                 },
+                        //                 ticks: {
+                        //                     color: 'white',
+                        //                     beginAtZero: true
+                        //                 }
+                        //             }
+                        //         },
+                        //         plugins: {
+                        //             legend: {
+                        //                 display: true,
+                        //                 labels: {
+                        //                     color: 'white',
+                        //                 }
+                        //             },
+                        //             tooltip: {
+                        //                 callbacks: {
+                        //                     label: function (context) {
+                        //                         let label = context.dataset.label || '';
+                        //                         if (label) {
+                        //                             label += ': ';
+                        //                         }
+                        //                         label += context.raw;
+                        //                         return label;
+                        //                     }
+                        //                 }
+                        //             }
+                        //         }
+                        //     }
+                        // };
 
-                        const lineCanvas = document.getElementById('myLineChart');
-                        new Chart(lineCanvas, lineConfig);
+                        // const lineCanvas = document.getElementById('myLineChart');
+                        // new Chart(lineCanvas, lineConfig);
                     });
                 } else {
                     throw ('Houve um erro na API!');

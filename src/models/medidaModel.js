@@ -15,9 +15,11 @@ function buscarMedidasEmTempoReal(idPontuacao) {
     return database.query(query, [idPontuacao]);
 }
 
-function guardarPontuacao(score, totalQuestions) {
-    var instrucao = `INSERT INTO pontuacao (score, totalQuestions) VALUES (${score}, ${totalQuestions})`;
+function guardarPontuacao(score, totalQuestions, fkUsuario) {
+    var instrucao = `INSERT INTO pontuacao (score, totalQuestions, fkUsuario) VALUES (${score}, ${totalQuestions}, ${fkUsuario})`
+
     return database.executar(instrucao);
+
 }
 
 module.exports = {

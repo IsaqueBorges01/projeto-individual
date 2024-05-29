@@ -39,8 +39,9 @@ function buscarMedidasEmTempoReal(req, res) {
 function guardarPontuacao(req, res) {
     var score = req.body.score;
     var totalQuestions = req.body.totalQuestions;
+    var fkUsuario = req.body.fkUsuario;
 
-    medidaModel.guardarPontuacao(score, totalQuestions).then(function (resultado) {
+    medidaModel.guardarPontuacao(score, totalQuestions, fkUsuario).then(function (resultado) {
         res.status(201).json({ message: "Pontuação guardada com sucesso!" });
     }).catch(function (erro) {
         console.log(erro);
