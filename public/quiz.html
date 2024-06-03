@@ -27,7 +27,8 @@
         <div id="containerAll">
             <img id="logoQuiz" src="../assets/logo.png" alt="">
             <div id="titulo">
-                <h3 style="color: #3022cf; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; margin-left: 2vw;">
+                <h3
+                    style="color: #3022cf; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; margin-left: 2vw;">
                     SEJA BEM VINDO AO NOSSO QUIZ!
                     VAMOS COMEÇAR?</h3><br><br>
                 <div class="b">
@@ -39,24 +40,29 @@
                 <h3 style="color: #3022cf; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
                     RESPONDA AS QUESTÕES ABAIXO:</h3>
             </div>
-            <div id="question_container" style="display: none; color: black; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
-                <p id="question" style="color: black; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"></p>
+            <div id="question_container"
+                style="display: none; color: black; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+                <p id="question"
+                    style="color: black; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"></p>
             </div>
             <div id="botoes" style="display: none;">
                 <button onclick="checar(true)">Verdadeiro</button>
                 <button onclick="checar(false)">Falso</button>
             </div>
 
-           
-        </div> <div id="result-container">
-                <h2 id="resultado">Resultado do Quiz:</h2>
-                <p id="score" style="color: black; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"></p>
-            </div>
+
+        </div>
+        <div id="result-container">
+            <h2 id="resultado">Resultado do Quiz:</h2>
+            <p id="score"
+                style="color: black; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"></p>
+        </div>
 
         <dialog id="informacoes">
             <div class="modal">
-                <p id="p"><span style="color: #3022cf;">COMO FUNCIONA O NOSSO QUIZ?</span><br><br>TERÁ UMA SEQUÊNCIA DE PERGUNTAS<BR>
-                    RELACIOADAS AO CONTEXTO DE ACADEMIA EM GERAL <BR><BR>VOCÊ TERÁ QUE RESPONDER COM <BR>
+                <p id="p"><span style="color: #3022cf;">COMO FUNCIONA O NOSSO QUIZ?</span><br><br>TERÁ UMA SEQUÊNCIA DE
+                    PERGUNTAS<BR>
+                    RELACIONADAS AO CONTEXTO DE ACADEMIA EM GERAL <BR><BR>VOCÊ TERÁ QUE RESPONDER COM <BR>
                     VERDADEIRO OU FALSO CONFORME O SEU CONHECIMENTO!</BR><br>
                     AO FINAL DAS QUESTÕES APARECERÁ SUA PONTUAÇÃO.<br><br>
                     BOA SORTE!
@@ -66,7 +72,8 @@
         </dialog>
 
         <div style="display: flex; display: none;" id="dash">
-            <div style="display: flex; justify-content: center;margin-top: 5vh; align-items: center;height: 60vh; width: 40vw;">
+            <div
+                style="display: flex; justify-content: center;margin-top: 5vh; align-items: center;height: 60vh; width: 40vw;">
                 <canvas id="myChart" style="position: relative;margin-left: 10vw; margin-top: 5vh;"></canvas>
             </div>
         </div>
@@ -130,76 +137,81 @@
                 <button onclick="quiz()">Tentar novamente</button>
                 <button onclick="home()">Sair</button>`;
 
-                const response = await fetch('/medidas/guardarPontuacao', {
+            // Faz uma requisição POST assíncrona para a URL '/medidas/guardarPontuacao'
+            const response = await fetch('/medidas/guardarPontuacao', {
+                // Define o método da requisição como POST
                 method: 'POST',
+                // Define o cabeçalho da requisição, especificando que o corpo será em formato JSON
                 headers: {
                     'Content-Type': 'application/json'
                 },
+                // Converte o objeto JavaScript em uma string JSON e define-o como o corpo da requisição
                 body: JSON.stringify({
-                    score: score,
-                    totalQuestions: questions.length,
-                    fkUsuario: sessionStorage.ID_USUARIO
+                    score: score, // Adiciona a pontuação atual ao corpo da requisição
+                    totalQuestions: questions.length, // Adiciona o número total de perguntas ao corpo da requisição
+                    fkUsuario: sessionStorage.ID_USUARIO // Adiciona o ID do usuário, armazenado no sessionStorage, ao corpo da requisição
                 })
             });
-    
+
+
             const result = await response.json();
             console.log(result);
 
 
-// Labels para o gráfico de pizza
-const labels = ['Erros', 'Acertos'];
+            // Labels para o gráfico de pizza
+            const labels = ['Erros', 'Acertos'];
 
-// Dados para o gráfico
-const data = {
-    labels: labels,
-    datasets: [{
-        label: 'Pontuação:',
-        backgroundColor: ['red', '#3022cf'],
-        borderWidth: 2,
-        // Cálculo dos dados para o gráfico de pizza
-        data: [
-            (questions.length - score) / questions.length, // Proporção de erros
-            score / questions.length                      // Proporção de acertos
-        ],
-    }]
-};
+            // Dados para o gráfico
+            const data = {
+                labels: labels,
+                datasets: [{
+                    label: 'Pontuação:',
+                    backgroundColor: ['red', '#3022cf'],
+                    borderWidth: 2,
+                    // Cálculo dos dados para o gráfico de pizza
+                    data: [
+                        (questions.length - score) / questions.length, // Proporção de erros
+                        score / questions.length                      // Proporção de acertos
+                    ],
+                }]
+            };
 
-// Configuração do gráfico
-const config = {
-    type: 'pie',
-    data: data,
-    options: {
-        plugins: {
-            legend: {
-                display: true,
-                labels: {
-                    color: 'white',
-                }
-            },
-            tooltip: {
-                callbacks: {
-                    label: function (context) {
-                        let label = context.label || '';
-                        if (label) {
-                            label += ': ';
+            // Configuração do gráfico
+            const config = {
+                type: 'pie',
+                data: data,
+                options: {
+                    plugins: {
+                        legend: {
+                            display: true,
+                            labels: {
+                                color: 'white',
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function (context) {
+                                    let label = context.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    // Adicionando a porcentagem ao tooltip
+                                    label += (context.raw * 10);
+                                    return label;
+                                }
+                            }
                         }
-                        // Adicionando a porcentagem ao tooltip
-                        label += (context.raw * 10);
-                        return label;
                     }
                 }
-            }
-        }
-    }
-};
+            };
 
-// Selecionando o canvas do gráfico
-const canvas = document.getElementById('myChart');
-canvas.height = 150;
-canvas.width = 200;
+            // Selecionando o canvas do gráfico
+            const canvas = document.getElementById('myChart');
+            canvas.height = 150;
+            canvas.width = 200;
 
-// Criando o gráfico
-new Chart(canvas, config);
+            // Criando o gráfico
+            new Chart(canvas, config);
 
         }
 
@@ -220,8 +232,8 @@ new Chart(canvas, config);
 
         Aparecer();
 
-        function dashboard(){
-            window.location.href="dashboard.html"
+        function dashboard() {
+            window.location.href = "dashboard.html"
         }
     </script>
 </body>

@@ -20,25 +20,36 @@
 <body style="background-color: #161618;">
     <div class="janela">
         <div class="header-left">
-            <h1>Academia START</h1>
+            <h1>BEM VINDO(A)</h1>
+            <div class="img"><img src="./assets/logo.png" alt=""></div>
             <div class="hello">
                 <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
             </div>
+          
+            <button class="btn-voltar" onclick="quiz()">REFAZER QUIZ</button> 
+            
             <div class="btn-logout" onclick="limparSessao()">
                 <h3>Sair</h3>
             </div>
-            <button class="btn-voltar" onclick="quiz()">REFAZER QUIZ</button>
         </div>
+        <dialog id="sair">
+            <div class="modal">
+                <p id="p"><span style="color: #000000">TEM CERTEZA QUE DESEJA SAIR?</span><br><br>
+                </p>
+            </div>
+            <button class="botaoModal" style="margin-left: 3.5vw; margin-top: -8vh;" onclick="login()">SAIR</button>
+            <button class="botaoModal" style="margin-top: -8vh;" onclick="fechar()">NÃO</button>
 
+        </dialog>
         <div class="dash-right">
             <div class="avisos">
                 <div class="container">
                     <div class="div-form">
-                        <br>
-                        <button id="verHistorico" onclick="listar()" style="width: 20vw; margin-top: 11vh;">VER HISTÓRICO DE PONTUAÇÃO</button>
+                        <br>    
+                        <button id="verHistorico" onclick="listar()" style="width: 20vw; margin-top: 11vh;">VER RANKING DE PONTUAÇÃO</button>
                     </div><br>
                     <div style="display: flex; flex-direction: row;">
-                        <div style="margin-left: 41vw;" class="div-results">
+                        <div style="margin-left: 45vw;" class="div-results">
                             <div id="feed_container" class="feed-container"></div>
                         </div>
                         <div style="height: 45vh; width: 50vw; margin-top: -10vh;">
@@ -81,12 +92,12 @@
                         let correctAnswers = 0;
                         let rounds = [];
                         let scores = [];
-                        feed.innerHTML=`<span style="color: #32b9cd; font-size: 25px">OS ULTIMOS 3 REGISTROS:</span><br><br>`
+                        feed.innerHTML=`<span style="color: #32b9cd; font-size: 25px">RANKING DE PONTUAÇÃO:</span><br><br>`
 
                         for (let i = 0; i < resposta.length; i++) {
                             var publicacao = resposta[i];
-                            feed.innerHTML += `<p style="font-weight: lighter; font-size: 20px;  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
-                             USUÁRIO: <b>${publicacao.nome}</b></b><br>
+                            feed.innerHTML +=  `<p style="font-weight: lighter; font-size: 20px;  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
+                             ${i +1}º Lugar: <b>${publicacao.nome}</b></b><br>
                              EMAIL CADASTRADO: <b>${publicacao.email}</b></b><br>
                              QUANTIDADE DE ACERTOS: <b>${publicacao.score}</b> <br>
                              QUESTÕES TOTAIS: <b>${publicacao.totalQuestions}</b> <br>
@@ -95,7 +106,7 @@
                             correctAnswers = publicacao.score;
                             totalQuestions = publicacao.totalQuestions;
                             scores.push(publicacao.score);
-                            rounds.push(i + 1);
+                            rounds.push(i + 1); // Adiciona o número da rodada atual (i + 1) ao array rounds
                         }
 
                         const incorrectAnswers = totalQuestions - correctAnswers;
@@ -144,71 +155,6 @@
 
                         const canvas = document.getElementById('myChart');
                         new Chart(canvas, config);
-
-                        // const lineData = {
-                        //     labels: rounds,
-                        //     datasets: [{
-                        //         label: 'Acertos',
-                        //         backgroundColor: '#3022cf',
-                        //         borderColor: '#3022cf',
-                        //         data: scores,
-                        //         fill: false,
-                        //         tension: 0.1
-                        //     }]
-                        // };
-
-                        // const lineConfig = {
-                        //     type: 'line',
-                        //     data: lineData,
-                        //     options: {
-                        //         scales: {
-                        //             x: {
-                        //                 title: {
-                        //                     display: true,
-                        //                     text: 'Rodadas',
-                        //                     color: 'white'
-                        //                 },
-                        //                 ticks: {
-                        //                     color: 'white'
-                        //                 }
-                        //             },
-                        //             y: {
-                        //                 title: {
-                        //                     display: true,
-                        //                     text: 'Acertos',
-                        //                     color: 'white'
-                        //                 },
-                        //                 ticks: {
-                        //                     color: 'white',
-                        //                     beginAtZero: true
-                        //                 }
-                        //             }
-                        //         },
-                        //         plugins: {
-                        //             legend: {
-                        //                 display: true,
-                        //                 labels: {
-                        //                     color: 'white',
-                        //                 }
-                        //             },
-                        //             tooltip: {
-                        //                 callbacks: {
-                        //                     label: function (context) {
-                        //                         let label = context.dataset.label || '';
-                        //                         if (label) {
-                        //                             label += ': ';
-                        //                         }
-                        //                         label += context.raw;
-                        //                         return label;
-                        //                     }
-                        //                 }
-                        //             }
-                        //         }
-                        //     }
-                        // };
-
-                        // const lineCanvas = document.getElementById('myLineChart');
-                        // new Chart(lineCanvas, lineConfig);
                     });
                 } else {
                     throw ('Houve um erro na API!');
@@ -221,6 +167,18 @@
         function quiz() {
 
             window.location.href = "quiz.html";
+        }
+
+        function limparSessao(){
+            sair.showModal()
+        }
+
+        function login(){
+            window.location.href="login.html"
+        }
+
+        function fechar(){
+            sair.close()
         }
     </script>
 </body>

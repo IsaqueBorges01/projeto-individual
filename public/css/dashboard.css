@@ -16,6 +16,7 @@ body {
   width: 30%;
   color: rgb(216, 216, 216);
   font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  
 }
 
 .dash-right .avisos .container {
@@ -367,13 +368,12 @@ canvas {
 .dash-right {
   display: flex;
   width: 70%;
-  height: fit-content;
   background-color: #161618;
   position: relative;
   top: 0;
   left: 25%;
   height: 100vh;
-  overflow: auto;
+  overflow: hidden;
 }
 
 .header-left h1 {
@@ -466,3 +466,62 @@ canvas {
   background-color:firebrick;
 }
 
+.img img {
+  height: 25vh;
+  width: 17vw;
+}
+
+.modal{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+   color: black;
+   font-weight: bold;
+   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   margin-top: -30px;
+   font-size: 25px;
+   text-align: center;
+   
+}
+
+#sair{
+   border-radius: 15px;
+   background-color: rgb(200, 187, 187);
+   height: 25vh;
+   width: 22%;
+   overflow: hidden;
+   padding: -3px;
+   border: 3px solid black;
+}
+
+.botaoModal {
+  padding: 10px 40px;
+  border-radius: 50px;
+  cursor: pointer;
+  border: 0;
+  background-color: white;
+  box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-size: 15px;
+  transition: all 0.5s ease;
+}
+
+.botaoModal:hover {
+  letter-spacing: 3px;
+  background-color: hsl(261deg 80% 48%);
+  color: hsl(0, 0%, 100%);
+  box-shadow: rgb(93 24 220) 0px 7px 29px 0px;
+}
+
+.botaoModal:active {
+  letter-spacing: 3px;
+  background-color: hsl(261deg 80% 48%);
+  color: hsl(0, 0%, 100%);
+  box-shadow: rgb(93 24 220) 0px 0px 0px 0px;
+  transform: translateY(10px);
+  transition: 100ms;
+}
