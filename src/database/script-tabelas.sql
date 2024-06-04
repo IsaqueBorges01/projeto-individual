@@ -70,5 +70,26 @@ insert into pergunta values
 
       select alternativaQuiz, perguntaQuiz from alternativa join pergunta on fkPergunta = idPergunta;
 
+      SELECT usuario.id, usuario.nome, MAX(pontuacao.score) as max_score
+      FROM pontuacao JOIN usuario ON pontuacao.fkUsuario = usuario.id
+     GROUP BY usuario.id, usuario.nome ORDER BY max_score DESC LIMIT 5;
+
+    SELECT usuario.*, p.*
+    FROM usuario JOIN (
+    SELECT fkUsuario, MAX(score) AS max_score
+    FROM pontuacao as p
+    GROUP BY fkUsuario ) 
+    pm ON usuario.id = pm.fkUsuario
+    JOIN pontuacao p ON p.fkUsuario = pm.fkUsuario AND p.score = pm.max_score
+    WHERE p.id IN (
+    SELECT MIN(pontuacao2.id)
+    FROM pontuacao as pontuacao2 JOIN (
+    SELECT fkUsuario, MAX(score) AS max_score
+    FROM pontuacao as pontuacao3 GROUP BY fkUsuario
+    ) pontuacao3 ON pontuacao2.fkUsuario = pontuacao3.fkUsuario AND pontuacao2.score = pontuacao3.max_score
+    GROUP BY pontuacao2.fkUsuario
+    ) ORDER BY pm.max_score DESC LIMIT 5;
+
+
         
 

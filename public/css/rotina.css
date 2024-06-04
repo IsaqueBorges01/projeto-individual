@@ -58,11 +58,11 @@ button {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
    width: 60vw;
    height: 85vh;
-   margin-top: -20vh;
    max-height: 100vh; 
    overflow: auto; 
    padding: 10px;
    font-size: 22px;
+   margin-left: 10vw;
 }
 
 #container {
@@ -86,3 +86,16 @@ input {
    margin-left: 17vw;
 }
 
+.homem{
+  display: flex;
+  flex-direction: column;
+}
+
+#voltar {
+  margin-left: 10vw;
+}
+
+.casal{
+  margin-top: -11vh;
+  height: 5vh;
+}

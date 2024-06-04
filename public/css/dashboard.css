@@ -367,13 +367,13 @@ canvas {
 
 .dash-right {
   display: flex;
-  width: 70%;
+  width: 80%;
   background-color: #161618;
   position: relative;
   top: 0;
   left: 25%;
   height: 100vh;
-  overflow: hidden;
+  overflow: scroll;
 }
 
 .header-left h1 {
@@ -467,7 +467,7 @@ canvas {
 }
 
 .img img {
-  height: 25vh;
+  height: 21vh;
   width: 17vw;
 }
 
