@@ -5,6 +5,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow-x: hidden;
 }
 
 .label-captura {
@@ -372,8 +373,9 @@ canvas {
   position: relative;
   top: 0;
   left: 25%;
-  height: 100vh;
-  overflow: scroll;
+  height: 70vh;
+  
+ 
 }
 
 .header-left h1 {
@@ -525,3 +527,31 @@ canvas {
   transform: translateY(10px);
   transition: 100ms;
 }
+
+#ranking_table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#ranking_table th,
+#ranking_table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+#ranking_table th {
+    background-color: #303030;
+    color: white;
+}
+
+.divChart{
+  height: 50vh;
+   width: 40vw;
+    left: 40%; 
+    position: relative;
+     background-color: white;
+     margin-bottom: 5vh;
+     display: none;
+}
+

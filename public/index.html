@@ -26,7 +26,7 @@
             <h3>DESAFIE SUA MENTE, FORTALEÇA SEU POTENCIAL.</h3>
             <button onclick="quiz()">QUIZ</button>
         </div>
-       
+
         <div class="subtitulo">
             <h3>VENHA CONHECER OS PONTOS
                 SOBRE <span style="color: #3022CF;">ACADEMIA</span> QUE NÓS
@@ -46,15 +46,36 @@
         </div>
         <div class="overlay">
             <div class="overlay-content">
-                <div>
-                <h2>FUNCIONALIDADES EXTRAS:</h2>
-                <h3 style="color: black;">QUIZ SOBRE ACADEMIA PARA EXERCITAR SUA MENTE E SEU CONHECIMENTO!</h3>
-                <H3 style="color: black;">ROTINA DE TREINO DE MUSCULAÇÃO FEITA POR NÓS!</H3>
+                <div class="divOver">
+                    <h2>FUNCIONALIDADES EXTRAS:</h2>
+                    <h3 style="color: black;">QUIZ SOBRE ACADEMIA PARA EXERCITAR SUA MENTE E SEU CONHECIMENTO!</h3>
+                    <H3 style="color: black;">ROTINA DE TREINO DE MUSCULAÇÃO FEITA POR NÓS!</H3>
+                </div>
+
             </div>
-            <div class="divIMG">
-               <img id="img" src="./assets/objetivoONU.png" alt="objetivo">
+            <div class="valoresONU">
+                <div class="titulo">
+                    <h1>Saúde e Bem-Estar</h1>
+                </div>
+                <div class="contentONU">
+                    <div class="leftONU">
+                        <p class="textoONU">
+                            O Objetivo 3 da Agenda 2030 busca garantir uma vida saudável e promover o bem-estar para todas as pessoas, independentemente de idade, gênero ou origem. Isso envolve o acesso a serviços de saúde de qualidade, a adoção de estilos de vida saudáveis e a prevenção de doenças, incluindo questões como saúde materna e infantil, combate às doenças transmissíveis e promoção da saúde mental.
+                            <br><br>
+
+                            Esforços coordenados são essenciais, desde investimentos em infraestrutura de saúde até políticas de prevenção de doenças e cuidados acessíveis e equitativos. Priorizar a saúde em todas as políticas é fundamental para criar sociedades mais resilientes e inclusivas.</p>
+                    </div>
+                    <div class="rightONU">
+                        <div class="divIMG">
+                            <a target="_blank" href="https://brasil.un.org/pt-br/sdgs/3"><img id="img"
+                                    src="./assets/objetivoONU.png" alt="objetivo"></a>
+                        </div>
+
+                    </div>
+
+                </div>
             </div>
-            </div>
+
             <footer>
                 <div class="divFooter">
                     <h3>PRIVACY POLITIC | TERMS AND CONDITIONS | COOKIES</h3>
@@ -75,12 +96,12 @@
 
 <script>
 
-    function quiz(){
-     msg.showModal()
+    function quiz() {
+        msg.showModal()
     }
 
-    function entrar(){
-        window.location.href="login.html"
+    function entrar() {
+        window.location.href = "login.html"
     }
 
     function errar() {

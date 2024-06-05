@@ -29,6 +29,7 @@ button:hover {
     margin-top: 1vh;
     height: 10vh;
     text-align: center;
+    font-size:20px;
 }
 
 #result-container {

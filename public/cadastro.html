@@ -78,6 +78,7 @@
         var confirmacaoSenhaVar = input_confirmar.value;
         const arroba = emailVar.indexOf('@')
         const ponto = emailVar.indexOf('.com')
+        const school = emailVar.indexOf('.school')
         const exclamacao = senhaVar.indexOf('!')
         const arrobs = senhaVar.indexOf('@')
         const velha = senhaVar.indexOf('#')
@@ -106,30 +107,27 @@
                         mais de 1 caracter!`
             return false;
         } else if (arroba < 0 && ponto < 0) {
-            exibir.innerHTML = `Seu email precisa conter:<br>
-                        um "@" e um ".com"`
+            exibir.innerHTML = `Insira um email válido`
             return false;
         } else if (arroba < 0 && ponto >= 0) {
-            exibir.innerHTML = `Seu email precisa conter
-                        um "@"`
+            exibir.innerHTML = `Insira um email válido`
             return false;
         } else if (ponto < 0 && arroba >= 0) {
-            exibir.innerHTML = `Seu email precisa conter
-                        um ".com"`
+            exibir.innerHTML = `Insira um email válido`
             return false;
             
-        } else if(emailVar.indexOf(".com") < emailVar.indexOf("@")) {
-            exibir.innerHTML = `.com precisa estar depois do @`
+        } else if((emailVar.indexOf(".com")||emailVar.indexOf(".school")) < emailVar.indexOf("@")) {
+            exibir.innerHTML = `@ precisa vir antes do .`
             return false
-        } else if (senhaVar.length < 10 || (exclamacao < 0 && arrobs < 0 && velha < 0 && cifrao < 0 && ast < 0 && comercial < 0 && porcento < 0)) {
+        } else if (senhaVar.length < 7 || (exclamacao < 0 && arrobs < 0 && velha < 0 && cifrao < 0 && ast < 0 && comercial < 0 && porcento < 0)) {
             exibir.innerHTML = `Sua senha deve conter<br>
-                        no mínimo 10 caracteres<br>
+                        no mínimo 7 caracteres<br>
                         pelo menos 1 caracter especial`
             return false
 
         } 
         else if (senhaVar != confirmacaoSenhaVar || confirmacaoSenhaVar != senhaVar) {
-            exibir.innerHTML = `Suas senhas precisam estar iguais!`
+            exibir.innerHTML = `As senhas devem ser compatíveis!`
             return false
 
         } else {

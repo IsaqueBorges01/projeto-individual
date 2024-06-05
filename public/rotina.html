@@ -22,7 +22,8 @@
         </nav>
     </div>
     <div id="titulo" class="titulo">
-        <h2 style="margin-left: 5vw;margin-top: 5vh; color: #ffffff; font-family: Roboto, sans-serif;">Olá usuário, seja bem vindo! Essa é a página onde<br>
+        <h2 style="margin-left: 5vw;margin-top: 5vh; color: #ffffff; font-family: Roboto, sans-serif;">Olá usuário, seja
+            bem vindo! Essa é a página onde<br>
             você poderá ter uma rotina de treino de musculação<br>
             semanal feita por nós, vamos lá?</h2>
     </div>
@@ -37,12 +38,14 @@
             <button id="voltar" onclick="home()">Sair</button>
         </div>
         <div id="casal" class="casal"><img src="./assets/casal.png" alt=""></div>
-        
+
         <div style="display: none;" id="mostrar"></div>
     </div>
     <div id="erro"></div>
 
+
     <script>
+
         function home() {
             window.location.href = "index.html";
         }
@@ -50,12 +53,12 @@
         function exibir() {
             mostrar.innerHTML = '';
             erro.innerHTML = '';
-            document.getElementById('titulo').style.display="none"
-            document.getElementById('container2').style.display="none"
-            document.getElementById('casal').style.display="none"
-            document.getElementById('homem').style.display="block"
-            document.getElementById('voltar').style.display="block"
-            
+            document.getElementById('titulo').style.display = "none"
+            document.getElementById('container2').style.display = "none"
+            document.getElementById('casal').style.display = "none"
+            document.getElementById('homem').style.display = "block"
+            document.getElementById('voltar').style.display = "block"
+
             document.getElementById('mostrar').style.display = "block"
             mostrar.innerHTML += `<p style="color: #3022cf; font-size:25px">Segunda-feira: peito e tríceps</p><br><br>
                 Supino reto com barra: fazer 3 séries de 8 a 10 repetições.<br>
@@ -124,9 +127,9 @@
                 Stiff: fazer 3 séries de 10 a 12 repetições.<br><br>
 
                 <p style="color: #3022cf; font-size:25px">Domingo: Descanso</p><br><br>`
-                }
-            
-        
+        }
+
+
     </script>
 </body>
 

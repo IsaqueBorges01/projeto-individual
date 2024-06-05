@@ -13,7 +13,8 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
         rel="stylesheet">
 </head>
 
@@ -25,9 +26,9 @@
             <div class="hello">
                 <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
             </div>
-          
-            <button class="btn-voltar" onclick="quiz()">REFAZER QUIZ</button> 
-            
+
+            <button class="btn-voltar" onclick="quiz()">REFAZER QUIZ</button>
+
             <div class="btn-logout" onclick="limparSessao()">
                 <h3>Sair</h3>
             </div>
@@ -45,24 +46,37 @@
             <div class="avisos">
                 <div class="container">
                     <div class="div-form">
-                        <br>    
-                        <button id="verHistorico" onclick="listar()" style="width: 20vw; margin-top: 11vh;">VER RANKING DE PONTUAÇÃO</button>
+                        <br>
+                        <button id="verHistorico" onclick="listar()" style="width: 20vw; margin-top: 11vh; margin-left: 2vw;">VER RANKING
+                            DE PONTUAÇÃO</button>
                     </div><br>
                     <div style="display: flex; flex-direction: row;">
                         <div style="margin-left: 50vw;" class="div-results">
-                            <div id="feed_container" class="feed-container"></div>
+                            <table id="ranking_table" style="color: white; display: none; width: 60vw; overflow-y: auto;">
+                                <thead>
+                                    <tr>
+                                        <th>Posição</th>
+                                        <th>Nome</th>
+                                        <th>Quantidade de Acertos</th>
+                                        <th>Data e Hora da Rodada</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="ranking_body">
+                                </tbody>
+                            </table>
                         </div>
-                        <div style="height: 45vh; width: 50vw; margin-top: -10vh;">
-                            <canvas id="myChart"></canvas>
-                        </div>
-                       
+
+
                     </div>
-                    <div style="height: 40vh; width: 40vw; margin-top: 4vh; margin-bottom: 3vh;">
+                    <!-- <div style="height: 40vh; width: 40vw; margin-top: 4vh; margin-bottom: 3vh;">
                         <canvas id="myLineChart"></canvas>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
+    </div>
+    <div class="divChart" id="divChart">
+        <canvas id="myChart"></canvas>
     </div>
 
     <script>
@@ -76,75 +90,66 @@
             fetch("/dash/listar").then(function (resposta) {
                 if (resposta.ok) {
                     if (resposta.status == 204) {
-                        var feed = document.getElementById("feed_container");
-                        var mensagem = document.createElement("span");
-                        mensagem.innerHTML = `<p style="font-weight: bold;color: #32b9cd;">NENHUM RESULTADO ENCONTRADO PARA O USUÁRIO "${sessionStorage.ID_USUARIO}"</p>`;
-                        feed.appendChild(mensagem);
+                        var rankingBody = document.getElementById("ranking_body");
+                        var mensagem = document.createElement("tr");
+                        mensagem.innerHTML = `<td colspan="4" style="font-weight: bold;color: #32b9cd;">NENHUM RESULTADO ENCONTRADO PARA O USUÁRIO "${sessionStorage.ID_USUARIO}"</td>`;
+                        rankingBody.appendChild(mensagem);
                         throw "Nenhum resultado encontrado!!";
                     }
 
                     resposta.json().then(function (resposta) {
                         console.log("Dados recebidos: ", JSON.stringify(resposta));
 
-                        var feed = document.getElementById("feed_container");
-                        feed.innerHTML = "";
-                        let totalQuestions = 0;
-                        let correctAnswers = 0;
-                        let rounds = [];
+                        var rankingBody = document.getElementById("ranking_body");
+                        rankingBody.innerHTML = "";
+
+                        let usernames = [];
                         let scores = [];
 
                         for (let i = 0; i < resposta.length; i++) {
                             var publicacao = resposta[i];
-                            feed.innerHTML +=  `<p style="font-weight: lighter; font-size: 20px;  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
-                             ${i +1}º Lugar: <b>${publicacao.nome}</b></b><br>
-                             EMAIL CADASTRADO: <b>${publicacao.email}</b></b><br>
-                             QUANTIDADE DE ACERTOS: <b>${publicacao.score}</b> <br>
-                             QUESTÕES TOTAIS: <b>${publicacao.totalQuestions}</b> <br>
-                             DATA E HORA DA RODADA: <b>${new Date(publicacao.data).toLocaleString("pt-BR")}</b><br><br></p>`;
 
-                            correctAnswers = publicacao.score;
-                            totalQuestions = publicacao.totalQuestions;
+                            // Adiciona os dados para o gráfico
+                            usernames.push(publicacao.nome);
                             scores.push(publicacao.score);
-                            rounds.push(i + 1); // Adiciona o número da rodada atual (i + 1) ao array rounds
+
+                            var newRow = document.createElement("tr");
+                            newRow.innerHTML = `
+                        <td>${i + 1}</td>
+                        <td>${publicacao.nome}</td>
+                        <td>${publicacao.score}</td>
+                        <td>${new Date(publicacao.data).toLocaleString("pt-BR")}</td>
+                    `;
+                            rankingBody.appendChild(newRow);
                         }
-
-                        const incorrectAnswers = totalQuestions - correctAnswers;
-
-                        const labels = ['Erros', 'Acertos'];
+                       document.getElementById('divChart').style.display="block"
+                        // Configuração do gráfico
                         const data = {
-                            labels: labels,
+                            labels: usernames,
                             datasets: [{
-                                label: 'Pontuação:',
-                                backgroundColor: ['red', '#3022cf'],
+                                label: 'Pontuação',
+                                backgroundColor: '#3022cf',
+                                borderColor: 'black',
                                 borderWidth: 2,
-                                data: [
-                                    incorrectAnswers,
-                                    correctAnswers
-                                ],
+                                data: scores,
                             }]
                         };
 
                         const config = {
-                            type: 'pie',
+                            type: 'line',
                             data: data,
                             options: {
                                 plugins: {
                                     legend: {
                                         display: true,
                                         labels: {
-                                            color: 'white',
+                                            color: 'black',
                                         }
                                     },
                                     tooltip: {
                                         callbacks: {
                                             label: function (context) {
-                                                let label = context.label || '';
-                                                if (label) {
-                                                    label += ': ';
-                                                }
-                                                // Adicionando a porcentagem ao tooltip
-                                                label += (context.raw * 1);
-                                                return label;
+                                                return 'Pontuação: ' + context.raw;
                                             }
                                         }
                                     }
@@ -152,8 +157,11 @@
                             }
                         };
 
+                        // Renderiza o gráfico
                         const canvas = document.getElementById('myChart');
                         new Chart(canvas, config);
+
+                        document.getElementById("ranking_table").style.display = "table"; // Mostra a tabela após o carregamento dos dados
                     });
                 } else {
                     throw ('Houve um erro na API!');
@@ -163,20 +171,20 @@
             });
         }
 
-        function quiz() {
 
+        function quiz() {
             window.location.href = "quiz.html";
         }
 
-        function limparSessao(){
+        function limparSessao() {
             sair.showModal()
         }
 
-        function login(){
-            window.location.href="login.html"
+        function login() {
+            window.location.href = "login.html"
         }
 
-        function fechar(){
+        function fechar() {
             sair.close()
         }
     </script>
