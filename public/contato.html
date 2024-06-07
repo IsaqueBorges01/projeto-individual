@@ -69,6 +69,7 @@
         var mensagemVar = input_mensagem.value
         var arrobaVar =  emailVar.indexOf('@')
         var pontoVar = emailVar.indexOf('.com')
+        var school = emailVar.indexOf('.school')
 
 
 
@@ -79,7 +80,7 @@
             exibir.innerHTML = `Preencha todos os campos!`
 
             return false;
-        } else if(arrobaVar <0 || pontoVar <0){
+        } else if(arrobaVar <0 || (pontoVar <0 && school <0)){
             exibir.innerHTML = `Insira um email válido!`
             return false
         }

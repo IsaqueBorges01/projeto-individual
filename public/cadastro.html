@@ -71,7 +71,6 @@
         exibir.innerHTML = '';
 
         //Recupere o valor da nova input pelo nome do id
-        // Agora vá para o método fetch logo abaixo
         var nomeVar = input_nome.value;
         var emailVar = input_email.value;
         var senhaVar = input_senha.value;
@@ -86,6 +85,7 @@
         const ast = senhaVar.indexOf('*')
         const comercial = senhaVar.indexOf('&')
         const porcento = senhaVar.indexOf('%')
+        let controle = 0
 
         // if (emailVar.indexOf(".com") > emailVar.indexOf("@")) {
 
@@ -102,31 +102,41 @@
 
             finalizarAguardar();
             return false;
-        } else if (nomeVar.length <= 1) {
-            exibir.innerHTML = `Seu nome precisa conter<br>
-                        mais de 1 caracter!`
-            return false;
-        } else if (arroba < 0 && ponto < 0) {
-            exibir.innerHTML = `Insira um email válido`
-            return false;
-        } else if (arroba < 0 && ponto >= 0) {
-            exibir.innerHTML = `Insira um email válido`
-            return false;
-        } else if (ponto < 0 && arroba >= 0) {
-            exibir.innerHTML = `Insira um email válido`
-            return false;
-            
-        } else if((emailVar.indexOf(".com")||emailVar.indexOf(".school")) < emailVar.indexOf("@")) {
-            exibir.innerHTML = `@ precisa vir antes do .`
-            return false
-        } else if (senhaVar.length < 7 || (exclamacao < 0 && arrobs < 0 && velha < 0 && cifrao < 0 && ast < 0 && comercial < 0 && porcento < 0)) {
-            exibir.innerHTML = `Sua senha deve conter<br>
-                        no mínimo 7 caracteres<br>
-                        pelo menos 1 caracter especial`
-            return false
+        } if (nomeVar.length <= 1) {
+            exibir.innerHTML += `Seu nome precisa conter<br>
+                        mais de 1 caracter!<br><br>`
+            controle++
 
         } 
-        else if (senhaVar != confirmacaoSenhaVar || confirmacaoSenhaVar != senhaVar) {
+        if (arroba < 0 && ponto < 0) {
+            exibir.innerHTML += `Email precisa de um @ e uma extensão de domínio<br><br>`
+            controle++
+
+        } 
+        if (arroba < 0 && ponto >= 0) {
+            exibir.innerHTML += `Email necessita um @<br><br>`
+            controle++
+
+        } else if (ponto < 0 && school < 0 && arroba >=0) {
+            exibir.innerHTML += `Email necessita de uma extensão de domínio<br><br>`;
+            controle++;
+        } else if ((ponto > 0 && ponto < arroba) || (school > 0 && school < arroba)) {
+            exibir.innerHTML += `@ precisa vir antes do .<br><br>`;
+            controle++;
+        }
+
+        if (senhaVar.length < 7) {
+            exibir.innerHTML += `Sua senha deve conter
+                        no mínimo 7 caracteres<br><br>`
+            controle++
+
+        } if (exclamacao < 0 && arrobs < 0 && velha < 0 && cifrao < 0 && ast < 0 && comercial < 0 && porcento < 0) {
+            exibir.innerHTML += `Pelo menos 1 caractere especial<br><br>`
+            controle++
+        } if (controle != 0) {
+            return false
+        }
+        else if (senhaVar != confirmacaoSenhaVar) {
             exibir.innerHTML = `As senhas devem ser compatíveis!`
             return false
 
