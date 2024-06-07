@@ -7,18 +7,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DASHBOARD</title>
-
     <link rel="stylesheet" href="./css/dashboard.css">
     <script src="../js/sessao.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
         rel="stylesheet">
 </head>
 
-<body style="background-color: #161618;">
+<body style="background-color: #161618;" onload="listar()">
     <div class="janela">
         <div class="header-left">
             <h1>BEM-VINDO(A)</h1>
@@ -26,33 +24,34 @@
             <div class="hello">
                 <h3>Olá <span id="b_usuario"></span>!</h3>
             </div>
-
             <button class="btn-voltar" onclick="quiz()">REFAZER QUIZ</button>
-
             <div class="btn-logout" onclick="limparSessao()">
                 <h3>Sair</h3>
             </div>
         </div>
         <dialog id="sair">
             <div class="modal">
-                <p id="p"><span style="color: #000000">TEM CERTEZA QUE DESEJA SAIR?</span><br><br>
-                </p>
+                <p id="p"><span style="color: #000000">TEM CERTEZA QUE DESEJA SAIR?</span><br><br></p>
             </div>
             <button class="botaoModal" style="margin-left: 3.5vw; margin-top: -8vh;" onclick="login()">SAIR</button>
             <button class="botaoModal" style="margin-top: -8vh;" onclick="fechar()">NÃO</button>
-
         </dialog>
         <div class="dash-right">
             <div class="avisos">
                 <div class="container">
-                    <div class="div-form">
-                        <br>
-                        <button id="verHistorico" onclick="listar()" style="width: 20vw; margin-top: 11vh; margin-left: 2vw;">VER RANKING
-                            DE PONTUAÇÃO</button>
-                    </div><br>
+                    <div id="pai">
+                       
+                        <div id="titulo2" style="margin-top: 2vh;">
+                            <h2>Quantidade de Jogadores Cadastrados: <span id="total_jogadores">0</span></h2>
+                        </div><br><br>
+                         <div id="titulo" style="margin-top: 2vh;">
+                            <h2>RANKING DE PONTUAÇÃO:</h2>
+                        </div>
+                    </div>
                     <div style="display: flex; flex-direction: row;">
-                        <div style="margin-left: 50vw;" class="div-results">
-                            <table id="ranking_table" style="color: white; display: none; width: 60vw; overflow-y: auto;">
+                        <div style="margin-left: 50vw; margin-top: 10vh;" class="div-results">
+                            <table id="ranking_table"
+                                style="color: white; display: none; width: 60vw; overflow-y: auto;">
                                 <thead>
                                     <tr>
                                         <th>Posição</th>
@@ -61,25 +60,18 @@
                                         <th>Data e Hora da Rodada</th>
                                     </tr>
                                 </thead>
-                                <tbody id="ranking_body">
-                                </tbody>
+                                <tbody id="ranking_body"></tbody>
                             </table>
                         </div>
-
-
                     </div>
-                    <!-- <div style="height: 40vh; width: 40vw; margin-top: 4vh; margin-bottom: 3vh;">
-                        <canvas id="myLineChart"></canvas>
-                    </div> -->
                 </div>
             </div>
         </div>
     </div>
-    <div></div><br><br><br><br><br>
+    <div></div><br>
     <div class="divChart" id="divChart">
         <canvas id="myChart"></canvas>
     </div>
-
     <script>
         function listar() {
             if (sessionStorage.NOME_USUARIO) {
@@ -116,14 +108,16 @@
 
                             var newRow = document.createElement("tr");
                             newRow.innerHTML = `
-                        <td>${i + 1}º</td>
-                        <td>${publicacao.nome}</td>
-                        <td>${publicacao.score}</td>
-                        <td>${new Date(publicacao.data).toLocaleString("pt-BR")}</td>
-                    `;
+                                <td>${i + 1}º</td>
+                                <td>${publicacao.nome}</td>
+                                <td>${publicacao.score}</td>
+                                <td>${new Date(publicacao.data).toLocaleString("pt-BR")}</td>
+                            `;
                             rankingBody.appendChild(newRow);
                         }
-                       document.getElementById('divChart').style.display="block"
+
+                        document.getElementById('divChart').style.display = "block";
+
                         // Configuração do gráfico
                         const data = {
                             labels: usernames,
@@ -170,8 +164,19 @@
             }).catch(function (resposta) {
                 console.error(resposta);
             });
-        }
 
+            fetch("/dash/totalJogadores").then(function (resposta) {
+                if (resposta.ok) {
+                    resposta.json().then(function (resposta) {
+                        document.getElementById('total_jogadores').innerText = resposta.totalJogadores;
+                    });
+                } else {
+                    throw ('Houve um erro na API!');
+                }
+            }).catch(function (resposta) {
+                console.error(resposta);
+            });
+        }
 
         function quiz() {
             window.location.href = "quiz.html";

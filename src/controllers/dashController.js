@@ -15,8 +15,21 @@ function listar(req, res) {
     });
 }
 
-
+function totalJogadores(req, res) {
+    dashModel.totalJogadores().then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json({ totalJogadores: resultado[0].totalJogadores });
+        } else {
+            res.status(204).send("Nenhum jogador encontrado!");
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar a quantidade de jogadores: ", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
 
 module.exports = {
-    listar
+    listar,
+    totalJogadores
 }

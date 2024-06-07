@@ -23,9 +23,18 @@ function listar() {
     return database.executar(instrucaoSql);
 }
 
-
-module.exports = {
-    listar
+function totalJogadores() {
+    console.log("ACESSEI O AVISO MODEL PARA TOTAL DE JOGADORES");
+    var instrucaoSql = `
+        SELECT COUNT(DISTINCT fkUsuario) as totalJogadores FROM pontuacao;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
 }
 
-// SELECT * FROM pontuacao JOIN usuario ON fkUsuario = usuario.id ORDER BY pontuacao.score DESC LIMIT 5;
+
+module.exports = {
+    listar,
+    totalJogadores,
+
+}

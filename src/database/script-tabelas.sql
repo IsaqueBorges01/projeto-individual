@@ -42,6 +42,7 @@ references pergunta(idPergunta)
 select * from contato;
 select * from usuario;
 select * from pontuacao;
+SELECT COUNT(DISTINCT fkUsuario) as totalJogadores FROM pontuacao;
 
 insert into pergunta values
 (default, "A proteína é importante para a recuperação muscular após o exercício?"),
