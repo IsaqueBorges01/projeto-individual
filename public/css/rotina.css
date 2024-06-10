@@ -86,7 +86,7 @@
 }
 
 footer {
-  background-color: #333;
+  background-color: #1f1e29;
   color: #fff;
   text-align: center;
   padding: 1rem 0;
@@ -95,9 +95,15 @@ footer {
 
 .divFooter h3 {
   margin: 0.5rem 0;
+   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .divFooter h5 {
   font-size: 0.9rem; 
    margin: 0.5rem 0;
+}
+
+.divFooter{
+  display: flex;
+  justify-content: space-around;
 }
